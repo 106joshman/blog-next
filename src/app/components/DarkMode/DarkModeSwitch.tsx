@@ -13,19 +13,20 @@ const DarkModeSwitch = () => {
   const currentTheme = theme === "system" ? systemTheme : theme;
   return (
     <>
-      {mounted && currentTheme === "dark" ? (
-        <HiSun
-          // color="gray"
-          onClick={() => setTheme("light")}
-          className="cursor-pointer text-xl hover:text-yellow-500 flex items-baseline"
-        />
-      ) : (
-        <HiMoon
-          // color="black"
-          onClick={() => setTheme("dark")}
-          className="cursor-pointer text-xl hover:text-yellow-500 flex items-baseline"
-        />
-      )}
+      {mounted &&
+        (currentTheme === "dark" ? (
+          <HiSun
+            // color="gray"
+            onClick={() => setTheme("light")}
+            className="cursor-pointer text-xl hover:text-yellow-500 flex items-baseline"
+          />
+        ) : (
+          <HiMoon
+            // color="black"
+            onClick={() => setTheme("dark")}
+            className="cursor-pointer text-xl hover:text-yellow-500 flex items-baseline"
+          />
+        ))}
     </>
   );
 };

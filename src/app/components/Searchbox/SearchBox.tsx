@@ -11,7 +11,7 @@ const SearchBox = () => {
         <div className="search_Input hidden md:flex items-center w-full border border-gray-500 rounded-[20px]">
           <input
             type="text"
-            className="block text-gray-900 rounded-tl-[20px] rounded-bl-[20px] text-base p-5 h-12 w-[500px] max-w-3xl bg-white border-none outline-none"
+            className="block text-gray-900 rounded-tl-[20px] rounded-bl-[20px] text-base p-5 h-12 w-[300px] lg:w-[500px] max-w-3xl bg-white border-none outline-none"
             placeholder="Enter key word"
             value={searchText}
             onChange={(e) => {
