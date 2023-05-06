@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import { Icon } from "@iconify/react";
@@ -7,38 +7,46 @@ import {
   Button,
   Alert,
   TextField,
-  FormControl,FormHelperText,
-  OutlinedInput,Input,FilledInput,InputAdornment,
+  FormControl,
+  FormHelperText,
+  OutlinedInput,
+  Input,
+  FilledInput,
+  InputAdornment,
   InputLabel,
 } from "@mui/material";
 import { Kalam } from "next/font/google";
-import React from "react";
+import React, { useState } from "react";
 
 const kalam = Kalam({
   weight: "400",
   subsets: ["latin"],
 });
 
-export default function InputAdornments() {
-  const [showPassword, setShowPassword] = React.useState(false);
+// export default function InputAdornments() {
 
-  // const handleClickShowPassword = () => setShowPassword((show) => !show);
+// const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  // const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-  //   event.preventDefault();
-  // };
+// const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+//   event.preventDefault();
+// };
 
-export const metadata = {
-  title: "Login",
-};
+// export const metadata = {
+//   title: "Login",
+// };
 
 const LoginPage = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  console.log(password);
+
   return (
     <div>
       {/* <Link href="\">go back hone</Link> */}
 
       <section className="h-screen">
-        <div className="container h-full px-6 py-24">
+        <div className="container h-full px-6 pt-28 pb-24">
           <div className="flex flex-col h-full items-center lg:w-1/2 mx-auto justify-center rounded-3xl bg-slate-400">
             <div className="head">
               <div
@@ -56,29 +64,49 @@ const LoginPage = () => {
 
             <div className="form">
               <form>
-                <div className="form-email"></div>
-                <FormControl sx={{ m: 1, width: "25ch" }} variant="outlined">
-                  <InputLabel htmlFor="outlined-adornment-password">
-                    Password
-                  </InputLabel>
-                  <OutlinedInput
-                id="outlined-adornment-password"
-                type={showPassword ? "text" : "password"}
-                // value={password}
-                onChange={(e) => setShowPassword((show) => !show)}
-                endAdornment={
-                  <IconButton
-                    onClick={() => setShowPassword(!showPassword)}
-                    edge="end"
-                  >
-                    <Icon
-                      icon={showPassword ? "eva:eye-fill" : "eva:eye-off-fill"}
+                <div className="form-email my-5">
+                  <TextField
+                    // style={{ margin: 1, width: "25ch" }}
+                    type="email"
+                    label="Email"
+                    name="email"
+                    variant="filled"
+                    // className="w-full border border-gray-300 rounded-md p-2 h-[46px] outline-none"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {/* {emailError && (
+              <Alert sx={{ mt: 2 }} severity="error">
+                {emailError}
+              </Alert>
+            )} */}
+                </div>
+                <div className="form-password">
+                  <FormControl sx={{ m: 1, width: "25ch" }} variant="filled">
+                    <InputLabel htmlFor="outlined-adornment-password">
+                      Password
+                    </InputLabel>
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      type={showPassword ? "text" : "password"}
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      endAdornment={
+                        <IconButton
+                          onClick={() => setShowPassword(!showPassword)}
+                          edge="end"
+                        >
+                          <Icon
+                            icon={
+                              showPassword ? "eva:eye-fill" : "eva:eye-off-fill"
+                            }
+                          />
+                        </IconButton>
+                      }
+                      label="Password"
                     />
-                  </IconButton>
-                }
-                label="Password"
-              />
-                </FormControl>
+                  </FormControl>
+                </div>
                 <div className="form-bttn"></div>
               </form>
             </div>
