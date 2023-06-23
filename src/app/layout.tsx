@@ -1,5 +1,4 @@
 import Provider from "./Provider/Provider";
-import Navbar from "./components/Navbar/Navbar";
 import Header from "./components/header/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -23,8 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Provider>
           <Header />
-          <Navbar />
-          <main className="container mx-auto">{children}</main>
+          <main className="">{children}</main>
         </Provider>
       </body>
     </html>
