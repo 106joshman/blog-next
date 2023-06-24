@@ -15,10 +15,10 @@ export default function Blogpost() {
   return (
     <div className="container mx-auto">
       <h4 className="text-xl p-4">All blog posts</h4>
-      <div className="sm:grid gap-2 sm:grid-cols-2 lg:grid-col-3 xl:grid-cols-4 pt-10 pb-5 border-b border-[1px_solid_rgba(230_230_230_1)]">
+      <div className="flex flex-col sm:grid gap-2 sm:grid-cols-2 lg:grid-col-3 xl:grid-cols-4 pt-10 pb-5 border-b border-[1px_solid_rgba(230_230_230_1)]">
         {posts.slice(0, articleNumber).map((post: any) => (
           <div className="cursor-pointer sm:p-3 sm:hover:shadow-slate-400 sm:shadow-md rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200">
-            <Link href={`/aricle/${post.id}`}>
+            <Link href={`/article/${post.id}`}>
               <Image
                 src={""}
                 alt="Article image art"
