@@ -1,7 +1,8 @@
 // import Link from "next/link";
 import React from "react";
+import Blogposts from "./components/BlogPosts/Blogposts";
 
-const HomePage = () => {
+export default function HomePage() {
   return (
     <div className="">
       <div className="h-[4.7rem]"></div>
@@ -20,9 +21,9 @@ const HomePage = () => {
           </h1>
         </div>
       </div>
-      
+      <section className="bg-slate-300 bg-opacity-80 p-2">
+        <Blogposts />
+      </section>
     </div>
   );
-};
-
-export default HomePage;
+}
