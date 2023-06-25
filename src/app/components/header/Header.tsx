@@ -45,11 +45,11 @@ const Header = () => {
               />
             </div>
 
-            <ul className="hidden lg:flex text-black">
+            <ul className="hidden lg:flex items-center text-black">
               <li>
                 <Link
                   href="/auth/login"
-                  className="mx-2 hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
+                  className="hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
                 >
                   Login
                 </Link>
@@ -60,7 +60,7 @@ const Header = () => {
                   onClick={() => {
                     setIsOpen(true);
                   }}
-                  className="mx-2 rounded-lg"
+                  className="hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
                   // className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                 >
                   Sign up

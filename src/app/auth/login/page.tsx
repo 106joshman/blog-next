@@ -1,21 +1,7 @@
 "use client";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import { Icon } from "@iconify/react";
-import {
-  Stack,
-  Button,
-  Alert,
-  TextField,
-  FormControl,
-  FormHelperText,
-  OutlinedInput,
-  Input,
-  FilledInput,
-  InputAdornment,
-  InputLabel,
-} from "@mui/material";
+import PasswordInput from "@/app/components/Password-Input/PasswordInput";
 import { Kalam } from "next/font/google";
+import Link from "next/link";
 import React, { useState } from "react";
 
 const kalam = Kalam({
@@ -23,97 +9,73 @@ const kalam = Kalam({
   subsets: ["latin"],
 });
 
-// export default function InputAdornments() {
-
-// const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-// const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-//   event.preventDefault();
-// };
-
-// export const metadata = {
-//   title: "Login",
-// };
-
 const LoginPage = () => {
-  const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  console.log(password);
 
   return (
-    <div>
-      {/* <Link href="\">go back hone</Link> */}
+    <section className="h-screen">
+      <div className="container mx-auto h-full px-6 pt-28 pb-24">
+        <div className="flex flex-col h-full items-center mx-auto md:w-[75%] justify-center rounded-3xl bg-slate-400">
+          <div className="head">
+            <div
+              className={`${kalam.className} h1 bg-black shadow-lg rounded-full text-white uppercase p-4 h-16 w-16 items-center mx-auto flex justify-center text-5xl`}
+            >
+              b
+            </div>
+            <h2 className="text-white text-2xl mt-2 text-center">
+              Welcome back!
+            </h2>
+            <p className="text-gray-700">
+              The black bloggers, blogging the right way
+            </p>
+          </div>
 
-      <section className="h-screen">
-        <div className="container h-full px-6 pt-28 pb-24">
-          <div className="flex flex-col h-full items-center lg:w-1/2 mx-auto justify-center rounded-3xl bg-slate-400">
-            <div className="head">
-              <div
-                className={`${kalam.className} h1 bg-black shadow-lg rounded-full text-white uppercase p-4 h-16 w-16 items-center mx-auto flex justify-center text-5xl`}
-              >
-                b
+          {/* LOGIN FORM */}
+          <div className="w-[90%] sm:w-3/5 lg:w-1/2 mt-10 mx-auto">
+            <form>
+              <div className="mb-4">
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="min-h-[auto] rounded-md border bg-transparent px-3 py-2 outline-none transition-all duration-200 ease-linear dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200 w-full"
+                  placeholder="Enter Your Email"
+                />
               </div>
-              <h2 className="text-white text-2xl mt-2 text-center">
-                Welcome back!
-              </h2>
-              <p className="text-gray-700">
-                The black bloggers, blogging the right way
-              </p>
-            </div>
 
-            <div className="form">
-              <form>
-                <div className="form-email my-5">
-                  <TextField
-                    // style={{ margin: 1, width: "25ch" }}
-                    type="email"
-                    label="Email"
-                    name="email"
-                    variant="filled"
-                    // className="w-full border border-gray-300 rounded-md p-2 h-[46px] outline-none"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                  {/* {emailError && (
-              <Alert sx={{ mt: 2 }} severity="error">
-                {emailError}
-              </Alert>
-            )} */}
+              <PasswordInput
+                value={password}
+                onChange={(e: any) => setPassword(e.target.value)}
+                placeholder="Enter your Password"
+              />
+
+              <div className="mb-4 flex justify-between text-sm items-center">
+                {/* <!-- Remember me checkbox --> */}
+                <div className="">
+                  <input className="" type="checkbox" value="" />
+                  <label className="inline-block pl-[0.15rem] hover:cursor-pointer">
+                    Remember me
+                  </label>
                 </div>
-                <div className="form-password">
-                  <FormControl sx={{ m: 1, width: "25ch" }} variant="filled">
-                    <InputLabel htmlFor="outlined-adornment-password">
-                      Password
-                    </InputLabel>
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      endAdornment={
-                        <IconButton
-                          onClick={() => setShowPassword(!showPassword)}
-                          edge="end"
-                        >
-                          <Icon
-                            icon={
-                              showPassword ? "eva:eye-fill" : "eva:eye-off-fill"
-                            }
-                          />
-                        </IconButton>
-                      }
-                      label="Password"
-                    />
-                  </FormControl>
-                </div>
-                <div className="form-bttn"></div>
-              </form>
-            </div>
+
+                {/* <!--Forgot password link--> */}
+                <Link href="#!">Forgot password?</Link>
+              </div>
+
+              <div className="mb-4 justify-center flex">
+                <button
+                  type="submit"
+                  className="bg-black text-white px-6 py-2 rounded-md w-full"
+                >
+                  Login
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
