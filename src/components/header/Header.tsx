@@ -54,8 +54,7 @@ const Header = () => {
               </li>
               <li>
                 <Link
-                  href="/profile"
-                  // href="/auth/register"
+                  href="/auth/register"
                   className="hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
                 >
                   Sign up

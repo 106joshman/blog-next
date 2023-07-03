@@ -24,13 +24,13 @@ export default function ThirdTab() {
       <div className="p-2 border-b border-[1px_solid_rgba(230_230_230_1)]">
         <button className="block flex-[1_1_0px] my-8">
           <span className="text-[#c94a4a] block text-start">Deactivate account</span>
-          <div className="text-[#757575]">
+          <div className="text-[#757575] text-start">
             Deactivating will suspend your account until you sign back in.
           </div>
         </button>
         <button className="block flex-[1_1_0px] my-8">
           <span className="text-[#c94a4a] block text-start">Delete account</span>
-          <div className="text-[#757575]">
+          <div className="text-[#757575] text-start">
             Permanently delete your account and all of your content.
           </div>
         </button>

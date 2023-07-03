@@ -31,8 +31,7 @@ export default function MobileMenu({
         </li>
         <li>
           <Link
-            href="/profile"
-            // href="/auth/register"
+            href="/auth/register"
             className="py-1.5 px-4"
             onClick={() => setShowBar(false)}
           >

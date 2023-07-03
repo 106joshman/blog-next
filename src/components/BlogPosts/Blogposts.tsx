@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import posts from "/data.json";
+import posts from "data.json";
 
 export default function Blogpost() {
   const [articleNumber, setArticleNumber] = useState(8);
@@ -57,7 +57,7 @@ export default function Blogpost() {
       <div className="flex justify-center items-center py-5">
         <button
           onClick={() => setArticleNumber(articleNumber + 4)}
-          className="text-blue-300 hover:text-blue-400"
+          className=" hover:text-blue-400"
         >
           Show more
         </button>
