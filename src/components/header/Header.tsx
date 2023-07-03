@@ -1,8 +1,6 @@
 "use client";
 import Link from "next/link";
 import React, { useState, Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
-import RegisterPage from "../../auth/register/page";
 import DarkModeSwitch from "../DarkMode/DarkModeSwitch";
 import { Divide as Hamburger } from "hamburger-react";
 import MobileMenu from "./MobileMenu";
@@ -55,40 +53,20 @@ const Header = () => {
                 </Link>
               </li>
               <li>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsOpen(true);
-                  }}
+                <Link
+                  href="/profile"
+                  // href="/auth/register"
                   className="hover:bg-neutral-500 py-2 px-3 rounded-lg hover:underline hover:underline-offset-[0.3em]"
-                  // className="rounded-md bg-black bg-opacity-20 px-4 py-2 text-sm font-medium text-white hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
                 >
                   Sign up
-                </button>
-                {/* <Link href="/auth/register" className="mx-2 p-2 rounded-lg">Sign up</Link> */}
+                </Link>
               </li>
             </ul>
           </div>
         </nav>
       </header>
 
-      <>
-        <RegisterPage
-          closeModal={closeModal}
-          openModal={openModal}
-          isOpen={isOpen}
-        />
-
-        {showBar && (
-          <MobileMenu
-            closeModal={closeModal}
-            openModal={openModal}
-            isOpen={isOpen}
-            showBar={showBar}
-            setShowBar={setShowBar}
-          />
-        )}
-      </>
+      <>{showBar && <MobileMenu showBar={showBar} setShowBar={setShowBar} />}</>
     </>
   );
 };

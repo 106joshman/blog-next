@@ -1,6 +1,6 @@
 // import Link from "next/link";
 import React from "react";
-import Blogposts from "./components/BlogPosts/Blogposts";
+import Blogpost from "@/components/BlogPosts/Blogposts";
 
 export default function HomePage() {
   return (
@@ -22,7 +22,7 @@ export default function HomePage() {
         </div>
       </div>
       <section className="bg-slate-300 bg-opacity-80 p-2">
-        <Blogposts />
+        <Blogpost />
       </section>
     </div>
   );

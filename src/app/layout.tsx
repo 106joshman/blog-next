@@ -1,5 +1,5 @@
+import Header from "@/components/header/Header";
 import Provider from "./Provider/Provider";
-import Header from "./components/header/Header";
 import "./globals.css";
 import { Inter } from "next/font/google";
 

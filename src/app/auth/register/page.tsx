@@ -1,72 +1,137 @@
-// "use client";
+"use client";
 // import Link from "next/link";
-import React, {  Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+import { Kalam } from "next/font/google";
+import PasswordInput from "@/components/Password-Input/PasswordInput";
+import React, { useState } from "react";
+import {FcGoogle} from "react-icons/fc";
 
-export const metadata = {
-  title: "Register",
-};
 
-const RegisterPage = ({ closeModal, openModal, isOpen }) => {
+const kalam = Kalam({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+const RegisterPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <div>
-      {/* <Link href="\">go back hone</Link> */}
-
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog as="div" className="relative z-10" onClose={closeModal}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-black bg-opacity-25" />
-          </Transition.Child>
-
-          <div className="fixed inset-0 overflow-y-auto">
-            <div className="flex min-h-full items-center justify-center p-4 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
+    <>
+      <div>
+        <div className="container mx-auto h-full px-6 pt-28 pb-24">
+          <div className="flex flex-col h-full items-center mx-auto md:w-[75%] justify-center p-3 rounded-3xl bg-slate-400">
+            <div className="head">
+              <div
+                className={`${kalam.className} h1 bg-black shadow-lg rounded-full text-white uppercase p-4 h-16 w-16 items-center mx-auto flex justify-center text-5xl`}
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
-                    Payment successful
-                  </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
-                    </p>
-                  </div>
+                b
+              </div>
+              <h2 className="text-white text-2xl my-2 text-center">
+                We are the black bloggers,
+              </h2>
+            </div>
 
-                  <div className="mt-4">
-                    <button
-                      type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={closeModal}
+            <div className="w-[90%] sm:w-3/5 lg:w-1/2 mt-10 mx-auto">
+              <form>
+                <div className="flex flex-row space-x-2 mb-4">
+                  <input
+                    type="text"
+                    className="w-full w-h-[auto] rounded-md border bg-transparent px-3 py-2 outline-none transition-all duration-200 ease-linear dark:text-neutral-200 shadow-md placeholder:text-neutral-500 dark:placeholder:text-neutral-200"
+                    placeholder="First Name"
+                  />
+                  <input
+                    type="text"
+                    className="w-full w-h-[auto] rounded-md border bg-transparent px-3 py-2 outline-none transition-all duration-200 ease-linear dark:text-neutral-200 shadow-md placeholder:text-neutral-500 dark:placeholder:text-neutral-200"
+                    placeholder="Last Name"
+                  />
+                </div>
+                <div className="mb-4">
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="min-h-[auto] rounded-md border bg-transparent px-3 py-2 outline-none transition-all duration-200 ease-linear dark:text-neutral-200 shadow-md placeholder:text-neutral-500 dark:placeholder:text-neutral-200 w-full"
+                    placeholder="Enter Your Email"
+                  />
+                </div>
+                <PasswordInput
+                  value={password}
+                  onChange={(e: any) => setPassword(e.target.value)}
+                  placeholder="Enter your Password"
+                />
+                <div className="mb-4">
+                  <button
+                    type="submit"
+                    className="bg-black text-white px-6 py-2 rounded-md w-full"
+                  >
+                    Register
+                  </button>
+                </div>
+
+                {/* <!-- Divider --> */}
+                <div className="my-4 flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-300 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-300">
+                  <p className="mx-4 mb-0 text-center font-semibold dark:text-neutral-200">
+                    OR
+                  </p>
+                </div>
+
+                <div className="flex sm:items-center flex-col sm:flex-row sm:flex-wrap">
+                  <button
+                    type="button"
+                    className="text-white bg-[#3b5998] hover:bg-[#3b5998]/90 focus:ring-4 focus:outline-none focus:ring-[#3b5998]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-2 w-full justify-center"
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2 -ml-1"
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fab"
+                      data-icon="facebook-f"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 320 512"
                     >
-                      Got it, thanks!
-                    </button>
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
+                      <path
+                        fill="currentColor"
+                        d="M279.1 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.4 0 225.4 0c-73.22 0-121.1 44.38-121.1 124.7v70.62H22.89V288h81.39v224h100.2V288z"
+                      ></path>
+                    </svg>
+                    Sign in with Facebook
+                  </button>
+                  <button
+                    type="button"
+                    className="text-white bg-[#1da1f2] hover:bg-[#1da1f2]/90 focus:ring-4 focus:outline-none focus:ring-[#1da1f2]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-2 w-full justify-center"
+                  >
+                    <svg
+                      className="w-4 h-4 mr-2 -ml-1"
+                      aria-hidden="true"
+                      focusable="false"
+                      data-prefix="fab"
+                      data-icon="twitter"
+                      role="img"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 512 512"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M459.4 151.7c.325 4.548 .325 9.097 .325 13.65 0 138.7-105.6 298.6-298.6 298.6-59.45 0-114.7-17.22-161.1-47.11 8.447 .974 16.57 1.299 25.34 1.299 49.06 0 94.21-16.57 130.3-44.83-46.13-.975-84.79-31.19-98.11-72.77 6.498 .974 12.99 1.624 19.82 1.624 9.421 0 18.84-1.3 27.61-3.573-48.08-9.747-84.14-51.98-84.14-102.1v-1.299c13.97 7.797 30.21 12.67 47.43 13.32-28.26-18.84-46.78-51.01-46.78-87.39 0-19.49 5.197-37.36 14.29-52.95 51.65 63.67 129.3 105.3 216.4 109.8-1.624-7.797-2.599-15.92-2.599-24.04 0-57.83 46.78-104.9 104.9-104.9 30.21 0 57.5 12.67 76.67 33.14 23.72-4.548 46.46-13.32 66.6-25.34-7.798 24.37-24.37 44.83-46.13 57.83 21.12-2.273 41.58-8.122 60.43-16.24-14.29 20.79-32.16 39.31-52.63 54.25z"
+                      ></path>
+                    </svg>
+                    Sign in with Twitter
+                  </button>
+
+                  <button
+                    type="button"
+                    className="text-white bg-[#4285F4] hover:bg-[#4285F4]/90 focus:ring-4 focus:outline-none focus:ring-[#4285F4]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-[#4285F4]/55 mr-2 mb-2 w-full justify-center"
+                  >
+                      <FcGoogle size={16} className="mr-2"/>
+                    Sign in with Google
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
-        </Dialog>
-      </Transition>
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 
