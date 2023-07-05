@@ -1,11 +1,21 @@
 "use client";
 import React, { useState } from "react";
 import { Button, Card, Grid, Stack, TextField } from "@mui/material";
-import { LoadingButton } from "@mui/lab";
+// import { LoadingButton } from "@mui/lab";
 import EditorTool from "./EditorTool";
 
 export default function Editorbox() {
   const [loading, setLoading] = useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [bodyContent, setBodyContent] = useState("");
+  
+  const handlePublish = (e: any) => {
+    e.preventDefault();
+    setLoading(true);
+
+    console.log(title, description, bodyContent);
+  };
   return (
     <>
       <form
@@ -16,10 +26,23 @@ export default function Editorbox() {
           <Grid item xs={12} md={8}>
             <Card sx={{ p: 3 }}>
               <Stack spacing={3}>
-                <TextField placeholder="Post title" />
-                <TextField placeholder="Description" multiline rows={3} />
+                <TextField
+                  onChange={(e) => setTitle(e.target.value)}
+                  placeholder="Post title"
+                />
+                <TextField
+                  onChange={(e) => setDescription(e.target.value)}
+                  placeholder="Description"
+                  multiline
+                  rows={3}
+                />
                 <div>
-                  <EditorTool />
+                  <EditorTool
+                    value={bodyContent}
+                    onChange={(value: React.SetStateAction<string>) =>
+                      setBodyContent(value)
+                    }
+                  />
                 </div>
               </Stack>
             </Card>
@@ -36,15 +59,17 @@ export default function Editorbox() {
               >
                 Preview
               </Button>
-              <LoadingButton
+              {/* #2e7d32 */}
+              <Button
                 fullWidth
-                type="submit"
+                type="button"
+                color="success"
                 variant="contained"
                 size="large"
-                loading={loading}
+                onClick={handlePublish}
               >
                 Post
-              </LoadingButton>
+              </Button>
             </Stack>
           </Grid>
         </Grid>

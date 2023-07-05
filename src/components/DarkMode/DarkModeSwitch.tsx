@@ -16,7 +16,6 @@ const DarkModeSwitch = () => {
       {mounted &&
         (currentTheme === "dark" ? (
           <HiSun
-            // color="gray"
             onClick={() => setTheme("light")}
             className="cursor-pointer text-xl hover:text-yellow-500 flex items-baseline"
           />
