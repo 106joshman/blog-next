@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { RiQuillPenFill } from "react-icons/ri";
 import React from "react";
 
 export default function UserBoard() {
@@ -15,14 +17,20 @@ export default function UserBoard() {
         ></Image>
       </div>
 
-      <div className="">
-        <h2 className="my-4 font-semibold">User Name</h2>
-        <span className="mb-3 text-sm sm:text-base text-[#757575]">
+      <div className="mb-3">
+        <h2 className="mt-4 font-semibold">User Name</h2>
+        <span className="text-sm sm:text-base text-[#757575]">
           10 Subscribers
         </span>
       </div>
 
-      <p className="my-4 text-[#757575]">User About</p>
+      <p className="mb-3 text-[#757575]">User About</p>
+
+      <div className="mb-3 text-[#757575]">
+        <Link href="/write-new" className="inline-flex items-center">
+          <RiQuillPenFill className="inline-flex items-center mr-1" /> Write{" "}
+        </Link>
+      </div>
     </div>
   );
 }

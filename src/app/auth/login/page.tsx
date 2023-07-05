@@ -22,14 +22,15 @@ const LoginPage = () => {
     password: "Password123456",
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e: any) => {
+    e.preventDefault();
     setTimeout(() => {
       if (email === loginDetails.email && password === loginDetails.password) {
         router.push("/profile");
       } else {
         alert("Invalid email or password");
       }
-    }, 2000);
+    }, 5000);
   };
 
   return (
@@ -84,7 +85,7 @@ const LoginPage = () => {
 
               <div className="mb-4 justify-center flex">
                 <button
-                  type="submit"
+                  type="button"
                   onClick={handleLogin}
                   className="bg-black text-white px-6 py-2 rounded-md w-full"
                 >

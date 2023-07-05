@@ -39,8 +39,9 @@ export default function Blogpost() {
                   quos fuga sapiente eum est.
                 </p>
                 <ul className="flex items-center space-x-3">
-                  {post.tags.map((tag: any) => (
+                  {post.tags.map((index: any, tag: any) => (
                     <li
+                      key={index}
                       className="bg-gray-300 rounded-full px-3 py-1"
                       style={{ color: generateRandomColor() }}
                     >
