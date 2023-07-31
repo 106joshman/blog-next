@@ -9,7 +9,7 @@ export default function MobileMenu({
   setShowBar,
 }: any) {
   return (
-    <div className="border border-[1px_solid_rgba(230_230_230_1)] rounded-md shadow-lg text-red-500 p-4 h-screen z-10 fixed top-20 left-0 bg-white transition duration-150 ease-in-out">
+    <div className="border border-[1px_solid_rgba(230_230_230_1)] rounded-md shadow-lg text-red-500 p-4 h-screen w-full z-10 fixed top-20 left-0 bg-white transition duration-150 ease-in-out">
       <ul className="text-start text-[#757575] text-sm space-y-3">
         <li>
           <Link

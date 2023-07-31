@@ -16,7 +16,7 @@ export default function HomePage() {
       >
         <div className="grid place-items-center min-h-full p-2">
           <h1 className="text-8xl font-bold">
-            Let's <span className="inline-flex text-pink-400">write</span> those
+            Let&apos;s <span className="inline-flex text-pink-400">write</span> those
             memories
           </h1>
         </div>
