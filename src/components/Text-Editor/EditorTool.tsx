@@ -6,10 +6,11 @@ import { Box } from "@mui/material";
 
 const RootStyle = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
-  border: `solid 1px ${theme.palette.grey[400]}`,
+  border: `solid 1px ${theme.palette.grey[500]}`,
   "& .ql-container.ql-snow": {
     borderColor: "transparent",
     ...theme.typography.body1,
+    // color: theme.palette.primary.main,
     fontFamily: theme.typography.fontFamily,
   },
   "& .ql-editor": {

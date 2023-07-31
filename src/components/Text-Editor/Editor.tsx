@@ -9,7 +9,7 @@ export default function Editorbox() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [bodyContent, setBodyContent] = useState("");
-  
+
   const handlePublish = (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -24,7 +24,7 @@ export default function Editorbox() {
       >
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
-            <Card sx={{ p: 3 }}>
+            <Card sx={{ p: 3, backgroundColor: "inherit" }}>
               <Stack spacing={3}>
                 <TextField
                   onChange={(e) => setTitle(e.target.value)}

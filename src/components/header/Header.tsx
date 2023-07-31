@@ -43,7 +43,7 @@ const Header = () => {
               />
             </div>
 
-            <ul className="hidden lg:flex items-center text-black">
+            <ul className="hidden ml-2 lg:flex items-center text-black">
               <li>
                 <Link
                   href="/auth/login"

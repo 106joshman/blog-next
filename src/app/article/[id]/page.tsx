@@ -17,9 +17,9 @@ export default function ArticlePage() {
           style={{ maxWidth: "100%", height: "100%" }}
         ></Image>
         <div className="p-2">
-          <h2 className="text-lg mb-3 font-bold">title</h2>
+          <h2 className="text-lg mb-3 font-bold">Title</h2>
 
-          <p className="text-lg mb-3">description</p>
+          <p className="text-lg mb-3">Description</p>
 
           <p className="mb-3">
             <span className="font-semibold mr-1">Related Tags:</span>
