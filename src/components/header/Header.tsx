@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import DarkModeSwitch from "../DarkMode/DarkModeSwitch";
 import { Divide as Hamburger } from "hamburger-react";
+import { SlNote } from "react-icons/sl";
 import MobileMenu from "./MobileMenu";
 
 const Header = () => {
@@ -28,6 +29,10 @@ const Header = () => {
           </div>
 
           <div className="navLinks flex items-center">
+            <Link href="/write-new" className="inline-flex mr-3 items-center md:text-lg">
+              <SlNote className="inline-flex items-center mr-1" /> Write
+            </Link>
+
             <DarkModeSwitch />
 
             <div className="mx-2 lg:hidden">
