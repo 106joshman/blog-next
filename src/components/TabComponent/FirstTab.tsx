@@ -41,7 +41,7 @@ const article = [
 export default function FirstTab() {
   return (
     <div className="">
-      {article.map(({ item }: any) => (
+      {article.map((item) => (
         <div
           key={item.id}
           className="border-b border-[1px_solid_rgba(230_230_230_1)] p-2"
@@ -60,12 +60,12 @@ export default function FirstTab() {
               </div>
               <div className="py-8">
                 <ul className="flex items-center space-x-3">
-                  {item.tag.map(({ index, item }: any) => (
+                  {item.tag.map((tag, index) => (
                     <li
                       key={index}
                       className="bg-gray-200 rounded-full px-3 py-1"
                     >
-                      {item}
+                      {tag}
                     </li>
                   ))}
                 </ul>

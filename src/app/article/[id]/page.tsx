@@ -13,7 +13,6 @@ const getPost = async (id: number) => {
 export default async function ArticlePage() {
   const params = useParams();
 
-  // console.log(params);
   const iD = Number(params.id);
   const post = await getPost(iD);
 
