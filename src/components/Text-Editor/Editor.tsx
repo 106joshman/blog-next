@@ -47,14 +47,14 @@ const modules = {
 };
 
 export default function Editor() {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [bodyContent, setBodyContent] = useState("");
 
-  const handlePublish = (e: any) => {
+  const handlePublish = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
     console.log(title, description, bodyContent);
   };
@@ -62,6 +62,7 @@ export default function Editor() {
     <>
       <form
         className="border-[1px_solid_rgba(230_230_230_1)] rounded-md sm:p-6"
+        onSubmit={handlePublish}
         action=""
       >
         <Grid container spacing={3}>
@@ -84,7 +85,6 @@ export default function Editor() {
                       value={bodyContent}
                       placeholder="Write something awesome..."
                       onChange={setBodyContent}
-                      // onChange={setValue}
                       theme="snow"
                       modules={modules}
                     />
@@ -106,11 +106,12 @@ export default function Editor() {
               </Button>
               {/* #2e7d32 */}
               <Button
+                type="submit"
                 fullWidth
                 color="success"
                 variant="contained"
                 size="large"
-                onClick={handlePublish}
+                // onClick={handlePublish}
               >
                 Post
               </Button>
