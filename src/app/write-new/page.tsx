@@ -1,3 +1,4 @@
+"use client";
 import Editor from "@/components/Text-Editor/Editor";
 
 // export const metadata = {
