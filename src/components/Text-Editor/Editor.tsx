@@ -1,10 +1,52 @@
 "use client";
 import React, { useState } from "react";
-import { Button, Card, Grid, Stack, TextField } from "@mui/material";
-// import { LoadingButton } from "@mui/lab";
-import EditorTool from "./EditorTool";
+import { Button, Card, Grid, Stack, TextField, Box } from "@mui/material";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
+import { styled } from "@mui/material/styles";
 
-export default function Editorbox() {
+const RootStyle = styled(Box)(({ theme }) => ({
+  borderRadius: theme.shape.borderRadius,
+  border: `solid 1px ${theme.palette.grey[500]}`,
+  "& .ql-container.ql-snow": {
+    borderColor: "transparent",
+    ...theme.typography.body1,
+    // color: theme.palette.primary.main,
+    fontFamily: theme.typography.fontFamily,
+  },
+  "& .ql-editor": {
+    minHeight: 200,
+    maxHeight: 640,
+    "&.ql-blank::before": {
+      fontStyle: "normal",
+      color: theme.palette.text.disabled,
+    },
+    "& pre.ql-syntax": {
+      ...theme.typography.body2,
+      padding: theme.spacing(2),
+      borderRadius: theme.shape.borderRadius,
+      backgroundColor: theme.palette.grey[900],
+    },
+  },
+}));
+
+const modules = {
+  toolbar: [
+    [{ header: [1, 2, 3, 4, 5, 6] }],
+    ["bold", "italic", "underline", "strike"],
+    [
+      { list: "ordered" },
+      { list: "bullet" },
+      { indent: "-1" },
+      { indent: "+1" },
+    ],
+    [{ align: "center" }, { align: "right" }, { align: "justify" }],
+    ["link", "image", "video"],
+    ["clean"],
+  ],
+};
+
+export default function Editor() {
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -37,17 +79,20 @@ export default function Editorbox() {
                   rows={3}
                 />
                 <div>
-                  <EditorTool
-                    value={bodyContent}
-                    onChange={(value: React.SetStateAction<string>) =>
-                      setBodyContent(value)
-                    }
-                  />
+                  <RootStyle>
+                    <ReactQuill
+                      value={bodyContent}
+                      placeholder="Write something awesome..."
+                      onChange={setBodyContent}
+                      // onChange={setValue}
+                      theme="snow"
+                      modules={modules}
+                    />
+                  </RootStyle>
                 </div>
               </Stack>
             </Card>
           </Grid>
-
           <Grid item xs={12} md={4}>
             <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
               <Button
@@ -62,7 +107,6 @@ export default function Editorbox() {
               {/* #2e7d32 */}
               <Button
                 fullWidth
-                type="button"
                 color="success"
                 variant="contained"
                 size="large"
