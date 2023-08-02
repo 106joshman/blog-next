@@ -1,9 +1,9 @@
 import Editor from "@/components/Text-Editor/Editor";
 
-export const metadata = {
-  title: "New Blog:The Blaq Blog.",
-  description: "Create a new blog",
-};
+// export const metadata = {
+//   title: "New Blog:The Blaq Blog.",
+//   description: "Create a new blog",
+// };
 
 export default function Write() {
   return (
