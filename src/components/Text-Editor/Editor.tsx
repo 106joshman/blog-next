@@ -1,25 +1,27 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
+import dynamic from "next/dynamic";
 import { Button, Card, Grid, Stack, TextField, Box } from "@mui/material";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { styled } from "@mui/material/styles";
 
 const RootStyle = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
+  // color: theme.palette.grey[400],
   border: `solid 1px ${theme.palette.grey[500]}`,
   "& .ql-container.ql-snow": {
     borderColor: "transparent",
     ...theme.typography.body1,
-    // color: theme.palette.primary.main,
+    // color: theme.palette.secondary.main,
     fontFamily: theme.typography.fontFamily,
   },
   "& .ql-editor": {
     minHeight: 200,
     maxHeight: 640,
+    color: theme.palette.grey[100],
     "&.ql-blank::before": {
       fontStyle: "normal",
-      color: theme.palette.text.disabled,
+      color: theme.palette.grey[500],
     },
     "& pre.ql-syntax": {
       ...theme.typography.body2,
@@ -47,6 +49,10 @@ const modules = {
 };
 
 export default function Editor() {
+  const ReactQuill = useMemo(
+    () => dynamic(() => import("react-quill"), { ssr: false }),
+    []
+  );
   // const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -77,6 +83,7 @@ export default function Editor() {
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="Description"
                   multiline
+                  className="placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200"
                   rows={3}
                 />
                 <div>
