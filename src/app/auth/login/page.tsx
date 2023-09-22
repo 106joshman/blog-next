@@ -1,6 +1,7 @@
 "use client";
 import PasswordInput from "@/components/Password-Input/PasswordInput";
 import { Kalam } from "next/font/google";
+import { Alert } from "@mui/lab";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -19,7 +20,7 @@ const LoginPage = () => {
 
   const loginDetails = {
     email: "madmax22@gmail.com",
-    password: "Password123456",
+    password: "Password",
   };
 
   const handleLogin = (e: any) => {
@@ -46,9 +47,10 @@ const LoginPage = () => {
             <h2 className="text-white text-2xl mt-2 text-center">
               Welcome back!
             </h2>
-            <p className="text-gray-700">
-              The black bloggers, blogging the right way
-            </p>
+            <Alert severity="info" sx={{ mb: 1, mt: 1 }}>
+              Use email : <strong>madmax22@gmail.com</strong> / password :
+              <strong> password</strong>
+            </Alert>
           </div>
 
           {/* LOGIN FORM */}

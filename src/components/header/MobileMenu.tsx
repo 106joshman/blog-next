@@ -1,5 +1,8 @@
 import Link from "next/link";
 import React from "react";
+import { BiUser, BiLogOutCircle } from "react-icons/bi";
+import { PiReadCvLogo } from "react-icons/pi";
+import { ImStatsBars2 } from "react-icons/im";
 
 export default function MobileMenu({
   closeModal,
@@ -13,17 +16,38 @@ export default function MobileMenu({
       <ul className="text-start text-[#757575] text-sm space-y-3">
         <li>
           <Link
-            href="/write-new"
-            className="py-1.5 px-4"
+            href="/profile"
+            className="py-1.5 px-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
-            Write
+            <BiUser className="text-lg mr-1" /> Profile
           </Link>
         </li>
+
+        <li>
+          <Link
+            href="/"
+            className="py-1.5 px-4 flex items-center"
+            onClick={() => setShowBar(false)}
+          >
+            <PiReadCvLogo className="text-lg mr-1" /> Stories
+          </Link>
+        </li>
+
+        <li>
+          <Link
+            href="/"
+            className="py-1.5 px-4 flex items-center"
+            onClick={() => setShowBar(false)}
+          >
+            <ImStatsBars2 className="text-lg mr-1" /> Stats
+          </Link>
+        </li>
+
         <li>
           <Link
             href="/auth/login"
-            className="py-1.5 px-4"
+            className="py-1.5 px-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
             Login
@@ -32,10 +56,19 @@ export default function MobileMenu({
         <li>
           <Link
             href="/auth/register"
-            className="py-1.5 px-4"
+            className="py-1.5 px-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
             Sign up
+          </Link>
+        </li>
+        <li>
+          <Link
+            href="/"
+            className="py-1.5 px-4 flex items-center"
+            onClick={() => setShowBar(false)}
+          >
+            <BiLogOutCircle className="text-lg mr-1" /> Sign out
           </Link>
         </li>
       </ul>

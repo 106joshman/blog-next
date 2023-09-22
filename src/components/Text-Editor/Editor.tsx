@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
-import { Button, Card, Grid, Stack, TextField, Box } from "@mui/material";
+import { Button, Card, Grid, Stack, Box } from "@mui/material";
 import "react-quill/dist/quill.snow.css";
 import { styled } from "@mui/material/styles";
 
@@ -12,13 +12,13 @@ const RootStyle = styled(Box)(({ theme }) => ({
   "& .ql-container.ql-snow": {
     borderColor: "transparent",
     ...theme.typography.body1,
-    // color: theme.palette.secondary.main,
+    color: "red",
     fontFamily: theme.typography.fontFamily,
   },
   "& .ql-editor": {
     minHeight: 200,
     maxHeight: 640,
-    color: theme.palette.grey[100],
+    color: "black",
     "&.ql-blank::before": {
       fontStyle: "normal",
       color: theme.palette.grey[500],
@@ -67,7 +67,7 @@ export default function Editor() {
   return (
     <>
       <form
-        className="border-[1px_solid_rgba(230_230_230_1)] rounded-md sm:p-6"
+        className="border-[1px_solid_rgba(230_230_230_1)] rounded-md sm:p-6 placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200"
         onSubmit={handlePublish}
         action=""
       >
@@ -75,17 +75,24 @@ export default function Editor() {
           <Grid item xs={12} md={8}>
             <Card sx={{ p: 3, backgroundColor: "inherit" }}>
               <Stack spacing={3}>
-                <TextField
-                  onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Post title"
-                />
-                <TextField
-                  onChange={(e) => setDescription(e.target.value)}
-                  placeholder="Description"
-                  multiline
-                  className="placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200"
-                  rows={3}
-                />
+                <div className="">
+                  <input
+                    type="text"
+                    onChange={(e) => setTitle(e.target.value)}
+                    placeholder="Post title"
+                    className="min-h-[auto] rounded-md border bg-transparent px-[14px] py-[16.5px] outline-none transition-all duration-200 ease-linear placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200 w-full"
+                  />
+                </div>
+
+                <div className="">
+                  <textarea
+                    onChange={(e) => setDescription(e.target.value)}
+                    placeholder="Description"
+                    rows={3}
+                    className="min-h-[auto] rounded-md border resize-none bg-transparent px-[14px] py-[16.5px] outline-none transition-all duration-200 ease-linear placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200 w-full"
+                  ></textarea>
+                </div>
+
                 <div>
                   <RootStyle>
                     <ReactQuill
