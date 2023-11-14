@@ -4,24 +4,22 @@ import dynamic from "next/dynamic";
 import { Button, Card, Grid, Stack, Box } from "@mui/material";
 import "react-quill/dist/quill.snow.css";
 import { styled } from "@mui/material/styles";
+import BlogPreview from "../Blog/BlogPreview";
 
 const RootStyle = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius,
-  // color: theme.palette.grey[400],
   border: `solid 1px ${theme.palette.grey[500]}`,
   "& .ql-container.ql-snow": {
     borderColor: "transparent",
     ...theme.typography.body1,
-    color: "red",
     fontFamily: theme.typography.fontFamily,
   },
   "& .ql-editor": {
     minHeight: 200,
     maxHeight: 640,
-    color: "black",
     "&.ql-blank::before": {
       fontStyle: "normal",
-      color: theme.palette.grey[500],
+      color: theme.palette.text.disabled,
     },
     "& pre.ql-syntax": {
       ...theme.typography.body2,
@@ -57,8 +55,9 @@ export default function Editor() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [bodyContent, setBodyContent] = useState("");
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const handlePublish = (e: React.FormEvent<HTMLFormElement>) => {
+  const handlePublish = (e: any) => {
     e.preventDefault();
     // setLoading(true);
 
@@ -66,11 +65,7 @@ export default function Editor() {
   };
   return (
     <>
-      <form
-        className="border-[1px_solid_rgba(230_230_230_1)] rounded-md sm:p-6 placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200"
-        onSubmit={handlePublish}
-        action=""
-      >
+      <form onSubmit={handlePublish} action="">
         <Grid container spacing={3}>
           <Grid item xs={12} md={8}>
             <Card sx={{ p: 3, backgroundColor: "inherit" }}>
@@ -93,7 +88,7 @@ export default function Editor() {
                   ></textarea>
                 </div>
 
-                <div>
+                <div className="placeholder:text-neutral-500 dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200 border-[rgba(145_158_171_0.32] rounded-lg font-medium">
                   <RootStyle>
                     <ReactQuill
                       value={bodyContent}
@@ -114,7 +109,7 @@ export default function Editor() {
                 color="inherit"
                 variant="outlined"
                 size="large"
-                // onClick={handleOpenPreview}
+                onClick={() => setIsOpen(true)}
               >
                 Preview
               </Button>
@@ -125,7 +120,7 @@ export default function Editor() {
                 color="success"
                 variant="contained"
                 size="large"
-                // onClick={handlePublish}
+                onClick={handlePublish}
               >
                 Post
               </Button>
@@ -134,14 +129,14 @@ export default function Editor() {
         </Grid>
       </form>
 
-      {/* <BlogNewPostPreview
-        values={values}
-        isOpen={open}
-        isValid={isValid}
-        isSubmitting={isSubmitting}
-        onClose={handleClosePreview}
-        onSubmit={handleSubmit(onSubmit)}
-      /> */}
+      <BlogPreview
+        title={title}
+        description={description}
+        bodyContent={bodyContent}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        // onSubmit={handleSubmit(onSubmit)}
+      />
     </>
   );
 }

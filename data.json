@@ -3,180 +3,180 @@
     "id": 1,
     "title": "Post 1",
     "description": "This is the full content of post 1",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 2,
     "title": "Post 2",
     "description": "This is the full content of post 2",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 3,
     "title": "Post 3",
     "description": "This is the full content of post 3",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 4,
     "title": "Post 4",
     "description": "This is the full content of post 4",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 5,
     "title": "Post 5",
     "description": "This is the full content of post 5",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 6,
     "title": "Post 6",
     "description": "This is the full content of post 6",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 7,
     "title": "Post 7",
     "description": "This is the full content of post 7",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 8,
     "title": "Post 8",
     "description": "This is the full content of post 8",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 9,
     "title": "Post 9",
     "description": "This is the full content of post 9",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 10,
     "title": "Post 10",
     "description": "This is the full content of post 10",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 11,
     "title": "Post 11",
     "description": "This is the full content of post 11",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 12,
     "title": "Post 12",
     "description": "This is the full content of post 12",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 13,
     "title": "Post 13",
     "description": "This is the full content of post 13",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 14,
     "title": "Post 14",
     "description": "This is the full content of post 14",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 15,
     "title": "Post 15",
     "description": "This is the full content of post 15",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 16,
     "title": "Post 16",
     "description": "This is the full content of post 16",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 17,
     "title": "Post 17",
     "description": "This is the full content of post 17",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 18,
     "title": "Post 18",
     "description": "This is the full content of post 18",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 19,
     "title": "Post 19",
     "description": "This is the full content of post 19",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "https://tecdn.b-cdn.net/img/new/standard/nature/184.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   },
   {
     "id": 20,
     "title": "Post 20",
     "description": "This is the full content of post 20",
-    "author":"lorem Ipsum",
-    "urlToImage":"",
+    "author": "lorem Ipsum",
+    "urlToImage": "/image.jpg",
     "createdAt": "24 June 2023",
-    "tags":["Tools", "SaaS","Podcasts"]
+    "tags": ["Tools", "SaaS", "Podcasts"]
   }
 ]

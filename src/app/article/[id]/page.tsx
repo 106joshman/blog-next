@@ -22,7 +22,7 @@ export default async function ArticlePage() {
 
       <div className="p-4 container mx-auto">
         <Image
-          src={`/`}
+          src="/image.jpg"
           width={500}
           height={300}
           className="rounded-lg"

@@ -12,8 +12,8 @@ export default function Tabs() {
         <li
           className={
             activeTab === "tab1"
-              ? "border-b border-gray-900 cursor-pointer p-2 text-gray-900"
-              : "p-2 text-gray-500 cursor-pointer"
+              ? "border-b border-gray-900 cursor-pointer px-4 py-2 rounded-t-md bg-[darkgrey]"
+              : "px-4 py-2 cursor-pointer"
           }
           onClick={() => setActiveTab("tab1")}
         >
@@ -22,8 +22,8 @@ export default function Tabs() {
         <li
           className={
             activeTab === "tab2"
-              ? "border-b border-gray-900 cursor-pointer p-2 text-gray-900"
-              : "p-2 text-gray-500 cursor-pointer"
+              ? "border-b border-gray-900 cursor-pointer px-4 py-2 rounded-t-md bg-[darkgrey]"
+              : "px-4 py-2 cursor-pointer"
           }
           onClick={() => setActiveTab("tab2")}
         >
@@ -32,8 +32,8 @@ export default function Tabs() {
         <li
           className={
             activeTab === "tab3"
-              ? "border-b border-gray-900 cursor-pointer p-2 text-gray-900"
-              : "p-2 text-gray-500 cursor-pointer"
+              ? "border-b border-gray-900 cursor-pointer px-4 py-2 rounded-t-md bg-[darkgrey]"
+              : "px-4 py-2 cursor-pointer"
           }
           onClick={() => setActiveTab("tab3")}
         >

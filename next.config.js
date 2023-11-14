@@ -3,7 +3,7 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
-  images: { domains: ["www.google.com"] },
-}
+  images: { domains: ["www.google.com", "tecdn.b-cdn.net"] },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

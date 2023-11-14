@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const article = [
   {
-    id: 1,
+    id: 0,
     title: "Article Title 1",
     shortDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem porro praesentium quasi. Recusandae nihilsoluta laboriosam magni labore. Enim nobis sit officiis natus dolorem placeat, ipsam, iusto ad error amet ducimus eligendi odit aut! Aspernatur quia dignissimos eligendi, quam sint exeos. Excepturi illo eum pariatur voluptatum eos debitis.",
@@ -17,21 +17,21 @@ const article = [
     tag: ["Tag 1", "Tag 2", "Tag 3"],
   },
   {
-    id: 1,
+    id: 2,
     title: "Article Title 3",
     shortDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem porro praesentium quasi. Recusandae nihilsoluta laboriosam magni labore. Enim nobis sit officiis natus dolorem placeat, ipsam, iusto ad error amet ducimus eligendi odit aut! Aspernatur quia dignissimos eligendi, quam sint exeos. Excepturi illo eum pariatur voluptatum eos debitis.",
     tag: ["Tag 1", "Tag 2", "Tag 3"],
   },
   {
-    id: 1,
+    id: 3,
     title: "Article Title 4",
     shortDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem porro praesentium quasi. Recusandae nihilsoluta laboriosam magni labore. Enim nobis sit officiis natus dolorem placeat, ipsam, iusto ad error amet ducimus eligendi odit aut! Aspernatur quia dignissimos eligendi, quam sint exeos. Excepturi illo eum pariatur voluptatum eos debitis.",
     tag: ["Tag 1", "Tag 2", "Tag 3"],
   },
   {
-    id: 1,
+    id: 4,
     title: "Article Title 5",
     shortDescription:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores rem porro praesentium quasi. Recusandae nihilsoluta laboriosam magni labore. Enim nobis sit officiis natus dolorem placeat, ipsam, iusto ad error amet ducimus eligendi odit aut! Aspernatur quia dignissimos eligendi, quam sint exeos. Excepturi illo eum pariatur voluptatum eos debitis.",
