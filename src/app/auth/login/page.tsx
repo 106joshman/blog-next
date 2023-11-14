@@ -47,7 +47,8 @@ export default async function LoginPage() {
             <Form />
 
             <Link href="/auth/register" className="mt-3 text-right">
-              Don't have an account? <span className="underline">Sign up</span>
+              {`Don't have an account?`}{" "}
+              <span className="underline">Sign up</span>
             </Link>
 
             {/* <!-- Divider --> */}
