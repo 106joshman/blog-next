@@ -1,9 +1,8 @@
 import { Kalam } from "next/font/google";
 import Link from "next/link";
-
 // import { FaFacebook, FaTwitter } from "react-icons/fa";
 // import { FcGoogle } from "react-icons/fc";
-import Form from "./form";
+import Form from "./LoginForm";
 // import { redirect } from "next/navigation";
 
 const kalam = Kalam({
@@ -30,6 +29,7 @@ export default async function LoginPage() {
         Login
       </h2>
 
+      {/* <Form /> */}
       <Form />
 
       <Link href="/auth/register" className="mt-3 text-right">

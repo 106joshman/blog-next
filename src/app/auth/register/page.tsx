@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { Kalam } from "next/font/google";
-// import { FcGoogle } from "react-icons/fc";
-// import { FaFacebook, FaTwitter } from "react-icons/fa";
-import Form from "./form";
-// import { redirect } from "next/navigation";
+import Form from "./RegisterForm";
 
 const kalam = Kalam({
   weight: "400",
@@ -16,10 +13,6 @@ export const metadata = {
 };
 
 export default async function RegisterPage() {
-  // const session = await getServerSession();
-  // if(session){
-  // redirect("/");
-  // }
   return (
     <>
       <h2

@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export interface Props {
   post: any;
@@ -19,14 +20,19 @@ export default function BlogCard({ post, index }: Props) {
       className="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
     >
       <Link href={`/article/${post.id}`}>
-        <img
+        <Image
           className="rounded-t-lg w-[500px] h-[300px]"
           src={post.urlToImage}
           alt="Article image art"
           width={500}
           height={300}
-          //   src="https://tecdn.b-cdn.net/img/new/standard/nature/186.jpg"
-        />
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            borderTopLeftRadius: "8px",
+            borderTopRightRadius: "8px",
+          }}
+        ></Image>
 
         <div className="p-6">
           <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">

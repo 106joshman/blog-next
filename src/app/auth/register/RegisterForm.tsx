@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import PasswordInput from "@/components/Password-Input/PasswordInput";
 import { useRouter } from "next/navigation";
+import { apiBaseURL } from "@/utils/fetchLink";
+import axios from "axios";
+import { FaSpider } from "react-icons/fa";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -11,6 +14,7 @@ export default function RegisterForm() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [error, setError] = useState("");
+  const [isLoadingButton, setIsLoadingButton] = useState(false);
 
   const isValidEmail = (email: string) => {
     const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/i;
@@ -27,11 +31,14 @@ export default function RegisterForm() {
 
   const handleRegister = async (e: any) => {
     e.preventDefault();
+    setIsLoadingButton(true);
+
     const registerValue = {
       email,
       password,
-      fullname: firstName + " " + lastName,
+      name: firstName + " " + lastName,
     };
+
     if (!isValidEmail(email)) {
       setError("Email is Invalid");
       return;
@@ -49,19 +56,15 @@ export default function RegisterForm() {
       return;
     }
 
-    console.log(registerValue);
     try {
-      const response = await fetch("/api/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ registerValue }),
-      });
-      if (response.status === 200) {
-        console.log(response);
-        router.push("/auth/login");
-      }
+      await axios.post(`${apiBaseURL}/users/register`, registerValue);
+
+      setIsLoadingButton(true);
+
+      router.push("/auth/login");
     } catch (error) {
       console.log("error signing in:", error);
+      setIsLoadingButton(false);
     }
   };
   return (
@@ -74,6 +77,7 @@ export default function RegisterForm() {
           className="w-full w-h-[auto] rounded-md border bg-transparent px-3 py-2 outline-none transition-all duration-200 ease-linear dark:text-neutral-200 shadow-md dark:placeholder:text-neutral-200"
           placeholder="First Name"
         />
+
         <input
           type="text"
           value={lastName}
@@ -103,13 +107,23 @@ export default function RegisterForm() {
         placeholder="Enter your Password"
       />
       <div className="">
-        <button
-          onClick={handleRegister}
-          type="submit"
-          className="dark:bg-black bg-[darkgrey] px-6 py-2 rounded-md w-full"
-        >
-          Register
-        </button>
+        {!isLoadingButton ? (
+          <button
+            onClick={handleRegister}
+            type="submit"
+            className="dark:bg-black bg-[darkgrey] px-6 py-2 rounded-md w-full font-bold"
+          >
+            Register
+          </button>
+        ) : (
+          <button
+            disabled
+            className="flex items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-md w-full"
+          >
+            <FaSpider className="text-xl animate-spin mr-2" />
+            Register
+          </button>
+        )}
       </div>
 
       <p className="text-[cyan] mt-3 text-sm">{error && error}</p>

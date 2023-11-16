@@ -1,5 +1,7 @@
 import UserBoard from "@/components/Dasboard/UserBoard";
 import UserList from "@/components/Dasboard/UserList";
+import { apiBaseURL } from "@/utils/fetchLink";
+import axios from "axios";
 
 export const metadata = {
   title: "Dasboard",
@@ -16,4 +18,8 @@ export default function Profilepage() {
       </div>
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const userData = await axios.get(`${apiBaseURL}/users/current`);
 }

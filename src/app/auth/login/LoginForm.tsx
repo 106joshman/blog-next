@@ -2,12 +2,16 @@
 import React, { useState } from "react";
 import PasswordInput from "@/components/Password-Input/PasswordInput";
 import { useRouter } from "next/navigation";
+import { apiBaseURL } from "@/utils/fetchLink";
+import axios from "axios";
+import { FaSpinner } from "react-icons/fa";
 
 export default function Form() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState<boolean>(false);
   const [error, setError] = useState("");
+  const [isLoadingButton, setIsLoadingButton] = useState(false);
 
   const router = useRouter();
 
@@ -26,6 +30,7 @@ export default function Form() {
 
   const handleLogin = async (e: any) => {
     e.preventDefault();
+    setIsLoadingButton(true);
 
     const loginValue = {
       email,
@@ -45,28 +50,16 @@ export default function Form() {
       return;
     }
 
-    console.log(loginValue);
     try {
-      const response = await fetch("/api/signin", {
-        method: "POST",
-        body: JSON.stringify({ loginValue }),
-      });
-      // if()
-      if (response.status === 200) {
-        console.log(response);
-        router.push("/profile");
-        router.refresh();
-      }
+      await axios.post(`${apiBaseURL}/users/login`, loginValue);
+
+      router.push("/profile");
+
+      setIsLoadingButton(true);
     } catch (error) {
       console.log("error signing in:", error);
+      setIsLoadingButton(false);
     }
-    // setTimeout(() => {
-    //   if (email === loginDetails.email && password === loginDetails.password) {
-    //     router.push("/profile");
-    //   } else {
-    //     alert("Invalid email or password");
-    //   }
-    // }, 5000);
   };
   return (
     <form action="">
@@ -109,14 +102,24 @@ export default function Form() {
         {/* <Link href="#!">Forgot password?</Link> */}
       </div>
 
-      <div className="justify-center flex">
-        <button
-          type="button"
-          onClick={handleLogin}
-          className="dark:bg-black bg-[darkgrey] px-6 py-2 rounded-md w-full"
-        >
-          Login
-        </button>
+      <div className="justify-center flex items-center">
+        {isLoadingButton ? (
+          <button
+            type="button"
+            disabled
+            className="flex items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-md w-full"
+          >
+            <FaSpinner className="text-xl animate-spin mr-2" /> Login
+          </button>
+        ) : (
+          <button
+            type="button"
+            onClick={handleLogin}
+            className="dark:bg-black bg-[darkgrey] px-6 py-2 rounded-md font-bold w-full"
+          >
+            Login
+          </button>
+        )}
       </div>
 
       <p className="text-[cyan] mt-3 text-sm">{error && error}</p>
