@@ -8,17 +8,25 @@ import MobileMenu from "./MobileMenu";
 import { BiSolidLogOutCircle, BiUser } from "react-icons/bi";
 import { Button, Dialog, DialogActions, Typography } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { useDispatch, useSelector } from "react-redux";
 import Avatars from "../Avatar";
-import { sessionStatus } from "@/utils/session";
 import { Logout } from "../Button";
 
+// export interface Props {
+//   user: any;
+//   isLogged: boolean;
+// }
+
 const Header = () => {
+  // const isLogged = useSelector((state: any) => state.user.isLogged);
+  // const { user } = useSelector((state: any) => state.user);
+
+  // console.log(user);
+
   const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
   const [show, setShow] = useState(false);
-
-  const { data: session }: any = sessionStatus;
 
   const router = useRouter();
 
@@ -47,17 +55,15 @@ const Header = () => {
           </div>
 
           <div className="navLinks flex items-center">
-            {session && (
+            {/* {isLogged && ( */}
               <Link
                 href="/write-new"
                 className="md:inline-flex mr-3 hidden items-center md:text-lg"
               >
                 <SlNote className="inline-flex items-center mr-1" /> Write
               </Link>
-            )}
-
+            {/* )} */}
             <DarkModeSwitch />
-
             <div className="mx-2 lg:hidden dark:text-neutral-200">
               <Hamburger
                 color="black"
@@ -71,9 +77,8 @@ const Header = () => {
                 toggle={setShowBar}
               />
             </div>
-
-            {session ? (
-              // {/* USER PROFILE */}
+            {/* {isLogged ? ( */}
+              {/* // USER PROFILE */}
               <div
                 className="cursor-pointer ml-3"
                 onClick={() => setIsOpen(!isOpen)}
@@ -108,7 +113,7 @@ const Header = () => {
                   </ul>
                 )}
               </div>
-            ) : (
+            {/* ) : ( */}
               <ul className="hidden ml-2 lg:flex items-center text-black">
                 <li>
                   <Link
@@ -127,10 +132,8 @@ const Header = () => {
                   </Link>
                 </li>
               </ul>
-            )}
-
+            {/* )} */}
             <>
-
               <Dialog
                 open={show}
                 onClose={() => setShow(true)}

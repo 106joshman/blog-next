@@ -1,10 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import PasswordInput from "@/components/Password-Input/PasswordInput";
+import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { apiBaseURL } from "@/utils/fetchLink";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
+import { dispatchUserLogin } from "@/redux/userSlice";
 
 export default function Form() {
   const [email, setEmail] = useState("");
@@ -12,6 +14,8 @@ export default function Form() {
   const [remember, setRemember] = useState<boolean>(false);
   const [error, setError] = useState("");
   const [isLoadingButton, setIsLoadingButton] = useState(false);
+
+  const dispatch = useDispatch();
 
   const router = useRouter();
 
@@ -51,11 +55,16 @@ export default function Form() {
     }
 
     try {
-      await axios.post(`${apiBaseURL}/users/login`, loginValue);
+      const response = await axios.post(
+        `${apiBaseURL}/users/login`,
+        loginValue
+      );
 
-      router.push("/profile");
+      console.log(response);
+      dispatch(dispatchUserLogin(response.data.accessToken));
 
-      setIsLoadingButton(true);
+      return router.push("/profile");
+      // setIsLoadingButton(false);
     } catch (error) {
       console.log("error signing in:", error);
       setIsLoadingButton(false);
