@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 // };
 
 export default function Profilepage() {
-  const token = useSelector((state: any) => state.accessToken);
+  const token = useSelector((state: any) => state.user.accessToken);
 
   const dispatch = useDispatch();
   if (token) {

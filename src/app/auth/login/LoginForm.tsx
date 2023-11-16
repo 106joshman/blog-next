@@ -61,7 +61,7 @@ export default function Form() {
       );
 
       console.log(response);
-      dispatch(dispatchUserLogin(response.data.accessToken));
+      dispatch(dispatchUserLogin({ accessToken: response.data.accessToken }));
 
       return router.push("/profile");
       // setIsLoadingButton(false);
