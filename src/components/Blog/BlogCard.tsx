@@ -21,11 +21,13 @@ export default function BlogCard({ post, index }: Props) {
     >
       <Link href={`/article/${post.id}`}>
         <Image
-          className="rounded-t-lg w-[500px] h-[300px]"
+          className="sm:rounded-t-lg"
           src={post.urlToImage}
-          alt="Article image art"
-          width={500}
+          alt="Article image art is not available"
+          width={508}
           height={300}
+          placeholder="blur"
+          blurDataURL="/Spinners.svg"
           style={{
             maxWidth: "100%",
             height: "auto",
@@ -72,49 +74,5 @@ export default function BlogCard({ post, index }: Props) {
         </div>
       </Link>
     </div>
-    // <div
-    //   key={index}
-    //   className="cursor-pointer border-b border-gray-400 sm:hover:shadow-slate-400 sm:shadow-md sm:rounded-lg sm:border sm:border-slate-400 sm:m-2 transition-shadow duration-200"
-    // >
-    //   <Link href={`/article/${post.id}`}>
-    //     <Image
-    //       src={"/image.jpg"}
-    //       alt="Article image art"
-    //       width={500}
-    //       height={300}
-    //       style={{
-    //         maxWidth: "100%",
-    //         height: "auto",
-    //         borderTopLeftRadius: "8px",
-    //         borderTopRightRadius: "8px",
-    //       }}
-    //     ></Image>
-    //     <div className="p-2 space-y-3">
-    //       <small className="text-purple-500 cursor-text inline-flex items-center space-x-3">
-    //         <span className="">{post.author}</span>
-    //         <span className="rounded-full h-2 w-2 bg-purple-600"></span>
-    //         <span className="">{post.createdAt}</span>
-    //       </small>
-    //       <h3 className="">{post.title}</h3>
-    //       <p className=" cursor-text">
-    //         Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere,
-    //         blanditiis ipsum. Maxime ullam voluptatibus, minus quos fuga
-    //         sapiente eum est.
-    //       </p>
-
-    //       <ul className="flex items-center space-x-3">
-    //         {post.tags.map((tag: string, index: number) => (
-    //           <li
-    //             key={index}
-    //             className="bg-gray-300 rounded-full px-3 py-1"
-    //             style={{ color: generateRandomColor() }}
-    //           >
-    //             {tag}
-    //           </li>
-    //         ))}
-    //       </ul>
-    //     </div>
-    //   </Link>
-    // </div>
   );
 }

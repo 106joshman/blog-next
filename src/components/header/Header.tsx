@@ -11,20 +11,18 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import Avatars from "../Avatar";
 import { Logout } from "../Button";
-
-// export interface Props {
-//   user: any;
-//   isLogged: boolean;
-// }
+import { dispatchLogout } from "@/redux/userSlice";
+import LogoutModal from "../Modal";
 
 const Header = () => {
-  // const isLogged = useSelector((state: any) => state.user.isLogged);
-  // const { user } = useSelector((state: any) => state.user);
+  const user = useSelector((state: any) => state.user.user.user);
 
-  // console.log(user);
+  const token = useSelector((state: any) => state.user.accessToken);
 
   const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const [show, setShow] = useState(false);
 
@@ -38,9 +36,11 @@ const Header = () => {
     e.preventDefault();
     try {
       setShow(false);
+
+      dispatch(dispatchLogout());
       router.push("/auth/login");
     } catch (error) {
-      console.log("error signing out:", error);
+      console.error("error signing out:", error);
     }
   };
 
@@ -55,30 +55,20 @@ const Header = () => {
           </div>
 
           <div className="navLinks flex items-center">
-            {/* {isLogged && ( */}
+            {token && (
               <Link
                 href="/write-new"
                 className="md:inline-flex mr-3 hidden items-center md:text-lg"
               >
                 <SlNote className="inline-flex items-center mr-1" /> Write
               </Link>
-            {/* )} */}
+            )}
+
+            {/* MODE SWITCH */}
             <DarkModeSwitch />
-            <div className="mx-2 lg:hidden dark:text-neutral-200">
-              <Hamburger
-                color="black"
-                label="Show menu"
-                distance="md"
-                rounded
-                // className='dark:text-neutral-200'
-                hideOutline={false}
-                size={30}
-                toggled={showBar}
-                toggle={setShowBar}
-              />
-            </div>
-            {/* {isLogged ? ( */}
-              {/* // USER PROFILE */}
+
+            {token ? (
+              // USER PROFILE */}
               <div
                 className="cursor-pointer ml-3"
                 onClick={() => setIsOpen(!isOpen)}
@@ -96,8 +86,8 @@ const Header = () => {
 
                         <div className="flex flex-col">
                           <span className="capitalize">
-                            {/* {session?.user?.name} */}
-                            John Doe
+                            {user?.name}
+                            {/* John Doe */}
                           </span>
                           {/* <span className="text-sm">
                             {/* {session?.user?.email} *
@@ -113,7 +103,7 @@ const Header = () => {
                   </ul>
                 )}
               </div>
-            {/* ) : ( */}
+            ) : (
               <ul className="hidden ml-2 lg:flex items-center text-black">
                 <li>
                   <Link
@@ -132,9 +122,27 @@ const Header = () => {
                   </Link>
                 </li>
               </ul>
-            {/* )} */}
+            )}
+
+            <div className="mx-2 lg:hidden dark:text-neutral-200">
+              <Hamburger
+                color="black"
+                label="Show menu"
+                distance="md"
+                rounded
+                hideOutline={false}
+                size={30}
+                toggled={showBar}
+                toggle={setShowBar}
+              />
+            </div>
             <>
-              <Dialog
+              <LogoutModal
+                show={show}
+                setShow={setShow}
+                onClick={handleLogout}
+              />
+              {/* <Dialog
                 open={show}
                 onClose={() => setShow(true)}
                 aria-labelledby="log out-prompt"
@@ -170,13 +178,13 @@ const Header = () => {
                     Yes
                   </button>
                 </DialogActions>
-              </Dialog>
+              </Dialog> */}
             </>
           </div>
         </nav>
       </header>
 
-      <>{showBar && <MobileMenu setShowBar={setShowBar} />}</>
+      <>{showBar && <MobileMenu setShowBar={setShowBar} setShow={setShow} />}</>
     </>
   );
 };

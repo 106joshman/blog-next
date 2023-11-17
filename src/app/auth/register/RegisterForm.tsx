@@ -63,7 +63,7 @@ export default function RegisterForm() {
 
       router.push("/auth/login");
     } catch (error) {
-      console.log("error signing in:", error);
+      console.error("error signing in:", error);
       setIsLoadingButton(false);
     }
   };

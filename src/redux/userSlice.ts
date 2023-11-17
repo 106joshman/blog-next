@@ -15,9 +15,9 @@ export const userSlice = createSlice({
       state.user = action.payload;
     },
     dispatchUserLogin: (state, action) => {
-      state.accessToken = action.payload;
-      state.user = action.payload;
-      state.userId = action.payload;
+      state.accessToken = action.payload.accessToken;
+      state.user = action.payload.user;
+      state.userId = action.payload.userId;
       state.isLogged = true;
     },
     dispatchSetAccessToken: (state, action) => {

@@ -3,9 +3,14 @@ import React, { useState } from "react";
 import FirstTab from "./FirstTab";
 import SecondTab from "./SecondTab";
 import ThirdTab from "./ThirdTab";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function Tabs() {
+interface Props {
+  userData?: any;
+}
+export default function Tabs({ userData }: Props) {
   const [activeTab, setActiveTab] = useState("tab1");
+
   return (
     <div>
       <ul className="flex flex-row space-x-3 items-center border-b shadow-[inset_0_-1px_0_rgba(230_230_230_1)]">

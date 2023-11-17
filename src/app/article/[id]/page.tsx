@@ -6,7 +6,7 @@ import { useParams } from "next/navigation";
 
 const getPost = async (id: number) => {
   const res = await fetch(`data.json/${id}`);
-  // console.log(res);
+  
   return res.json();
 };
 

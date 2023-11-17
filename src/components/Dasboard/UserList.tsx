@@ -2,7 +2,11 @@ import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Tabs from "../TabComponent/Tabs";
 import Image from "next/image";
 
-export default function UserList() {
+interface Props {
+  userData?: any;
+}
+
+export default function UserList({ userData }: Props) {
   return (
     <div className="p-5 lg:min-w-[700px] lg:ml-[280px] xl:ml-[370px] flex-grow">
       <div className="my-6">
@@ -18,7 +22,9 @@ export default function UserList() {
             ></Image>
 
             <div className="ml-2">
-              <h2 className="text-[4vw] lg:mb-3 font-semibold">User Name</h2>
+              <h2 className="text-[4vw] lg:mb-3 capitalize lg:hidden font-semibold">
+                {userData.name}
+              </h2>
               <span className="mb-3 text-sm lg:hidden sm:text-base text-[#757575]">
                 10 Subscribers
               </span>
@@ -26,11 +32,14 @@ export default function UserList() {
           </div>
 
           <button>
-            <BiDotsHorizontalRounded className="text-[#757575] font-bold" size={22} />
+            <BiDotsHorizontalRounded
+              className="text-[#757575] font-bold"
+              size={22}
+            />
           </button>
         </div>
 
-        <div className="">
+        <div className="my-5">
           <Tabs />
         </div>
       </div>

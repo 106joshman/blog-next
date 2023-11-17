@@ -5,18 +5,19 @@ import { PiReadCvLogo } from "react-icons/pi";
 import { SlNote } from "react-icons/sl";
 import { ImStatsBars2 } from "react-icons/im";
 import { useRouter } from "next/navigation";
-import { sessionStatus } from "@/utils/session";
-import { Logout } from "../Button";
+import { useSelector } from "react-redux";
 
 //  closeModal, openModal, isOpen,  showBar,
 interface PropTypes {
   setShowBar: any;
+  setShow: any;
 }
 
-export default function MobileMenu({ setShowBar }: PropTypes) {
+export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
+  const token = useSelector(
+    (state: any) => state.persistedReducer.user.accessToken
+  );
   const router = useRouter();
-
-  const session = sessionStatus;
 
   const handleLogout = async (e: any) => {
     setShowBar(false);
@@ -24,14 +25,14 @@ export default function MobileMenu({ setShowBar }: PropTypes) {
     try {
       router.push("/auth/login");
     } catch (error) {
-      console.log("error signing out:", error);
+      console.error("error signing out:", error);
     }
   };
   return (
     <nav className="border border-[1px_solid_rgba(230_230_230_1)] roundedmd shadow-lg p-4 h-screen w-1/2 z-50 fixed top-20 text-[#757575] left-0 bg-white transition duration-150 ease-in-out">
       <ul className="text-start text-sm space-y-3 mb-5">
         <li className="py-5">
-          {session ? (
+          {token ? (
             <Link
               href="/write-new"
               className="py-1.5 pr-4 flex items-center"
@@ -81,15 +82,14 @@ export default function MobileMenu({ setShowBar }: PropTypes) {
 
       <div className="w-full border-t border-[#cfcccc] absolute left-0"></div>
 
-      {session ? (
+      {token ? (
         <div className="my-5">
-          <Logout />
-          {/* <button
+          <button
             className="pt-5 pb-1.5 pr-4 flex items-center"
             onClick={handleLogout}
           >
-            Log Out <BiLogOutCircle className="text-lg ml-3" color="white" />
-          </button> */}
+            <BiLogOutCircle className="text-lg mr-3" /> Log Out
+          </button>
         </div>
       ) : (
         <div className="my-5 space-y-3 ">
