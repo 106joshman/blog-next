@@ -6,7 +6,8 @@ import { useSelector } from "react-redux";
 // }
 
 export default function ThirdTab() {
-  const user = useSelector((state: any) => state.user.user.user);
+  const user = useSelector((state: any) => state.persistedReducer.user.user);
+
   return (
     <div className="text-sm">
       <div className="p-2 border-b border-[1px_solid_rgba(230_230_230_1)]">

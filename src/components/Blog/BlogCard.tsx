@@ -30,7 +30,7 @@ export default function BlogCard({ post, index }: Props) {
           blurDataURL="/Spinners.svg"
           style={{
             maxWidth: "100%",
-            height: "auto",
+            height: 300,
             borderTopLeftRadius: "8px",
             borderTopRightRadius: "8px",
           }}

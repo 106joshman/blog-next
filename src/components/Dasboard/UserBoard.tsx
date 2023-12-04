@@ -17,7 +17,7 @@ export default function UserBoard({ userData }: Props) {
       <div className="">
         <h2 className="mt-4 font-semibold capitalize">{userData.name}</h2>
         <span className="text-sm pt-3 sm:text-base text-[#757575] dark:text-slate-200">
-          10 Subscribers
+          0 Subscribers
         </span>
       </div>
 

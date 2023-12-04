@@ -1,6 +1,7 @@
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Tabs from "../TabComponent/Tabs";
 import Image from "next/image";
+import Avatars from "../Avatar";
 
 interface Props {
   userData?: any;
@@ -12,21 +13,22 @@ export default function UserList({ userData }: Props) {
       <div className="my-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center justify-between minw-[300px] lg:minw-[600px] lg:p-2">
-            <Image
+            <Avatars height={"200px"} width={"200px"} />
+            {/* <Image
               src="/image.jpg"
               alt="User Image"
               height={200}
               width={200}
               style={{ height: "100px", width: "100px" }}
               className="rounded-full lg:hidden inline-flex"
-            ></Image>
+            ></Image> */}
 
             <div className="ml-2">
               <h2 className="text-[4vw] lg:mb-3 capitalize lg:hidden font-semibold">
                 {userData.name}
               </h2>
               <span className="mb-3 text-sm lg:hidden sm:text-base text-[#757575]">
-                10 Subscribers
+                0 Subscribers
               </span>
             </div>
           </div>

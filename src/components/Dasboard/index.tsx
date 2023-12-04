@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 
-import { dispatchUser } from "@/redux/userSlice";
 import { apiBaseURL } from "@/utils/fetchLink";
 import UserBoard from "@/components/Dasboard/UserBoard";
 import UserList from "@/components/Dasboard/UserList";
+import { dispatchUpdateUser } from "@/redux/userSlice";
 
 const getUser = async (token: string) => {
   try {
@@ -17,7 +17,7 @@ const getUser = async (token: string) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response;
+    return response?.data;
   } catch (error) {
     console.error("Encounter this", error);
   }
@@ -27,7 +27,7 @@ export default function Dashboard() {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const token = useSelector((state: any) => state.user.accessToken);
+  const token = useSelector((state: any) => state.persistedReducer.user.access_token);
   const dispatch = useDispatch();
 
   const router = useRouter();
@@ -38,19 +38,22 @@ export default function Dashboard() {
         try {
           setIsLoading(true);
           const response = await getUser(token);
-          setUserData(response?.data);
-          dispatch(dispatchUser({ user: response?.data }));
+          setUserData(response);
+          dispatch(dispatchUpdateUser({
+            user: response,
+            access_token: ''
+          }));
           setIsLoading(false);
         } catch (error) {
           console.error(error);
-          //   router.push("/auth/login");
+          router.push("/auth/login");
           setIsLoading(false);
         }
       }
     };
 
     fetchData();
-  }, [token, dispatch]);
+  }, [token, dispatch, router]);
 
   return (
     <div className="sm:container mx-auto">

@@ -15,9 +15,9 @@ import { dispatchLogout } from "@/redux/userSlice";
 import LogoutModal from "../Modal";
 
 const Header = () => {
-  const user = useSelector((state: any) => state.user.user.user);
+  const user = useSelector((state: any) => state.persistedReducer.user.user);
 
-  const token = useSelector((state: any) => state.user.accessToken);
+  const token = useSelector((state: any) => state.persistedReducer.user.access_token);
 
   const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -104,7 +104,7 @@ const Header = () => {
                 )}
               </div>
             ) : (
-              <ul className="hidden ml-2 lg:flex items-center text-black">
+              <ul className="hidden ml-3 space-x-3 lg:flex items-center text-black">
                 <li>
                   <Link
                     href="/auth/login"

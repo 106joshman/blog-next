@@ -29,7 +29,7 @@ export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
     }
   };
   return (
-    <nav className="border border-[1px_solid_rgba(230_230_230_1)] roundedmd shadow-lg p-4 h-screen w-1/2 z-50 fixed top-20 text-[#757575] left-0 bg-white transition duration-150 ease-in-out">
+    <nav className=" bg-gray-50 dark:bg-gray-800 dark:border-gray-700 border border-[1px_solid_rgba(230_230_230_1)] shadow-lg p-4 h-screen w-1/2 z-50 fixed top-20 text-#757575] left-0 transition duration-150 ease-in-out">
       <ul className="text-start text-sm space-y-3 mb-5">
         <li className="py-5">
           {token ? (
@@ -38,7 +38,7 @@ export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
               className="py-1.5 pr-4 flex items-center"
               onClick={() => setShowBar(false)}
             >
-              <SlNote className=" items-center mr-3" color="black" /> Write
+              <SlNote className="items-center mr-3" /> Write
             </Link>
           ) : (
             <Link
@@ -46,36 +46,36 @@ export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
               className="py-1.5 pr-4 flex items-center"
               onClick={() => setShowBar(false)}
             >
-              <SlNote className=" items-center mr-3" color="black" /> Write
+              <SlNote className="items-center mr-3" /> Write
             </Link>
           )}
         </li>
 
-        <li>
+        <li className="">
           <Link
             href="/profile"
             className="py-1.5 pr-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
-            <BiUser className="text-lg mr-3" color="black" /> Profile
+            <BiUser className="text-lg mr-3" /> Profile
           </Link>
         </li>
-        <li>
+        <li className="py-5">
           <Link
             href="/"
             className="py-1.5 pr-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
-            <PiReadCvLogo className="text-lg mr-3" color="black" /> Stories
+            <PiReadCvLogo className="text-lg mr-3" /> Stories
           </Link>
         </li>
-        <li>
+        <li className="">
           <Link
             href="/"
             className="py-1.5 pr-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
-            <ImStatsBars2 className="text-lg mr-3" color="black" /> Stats
+            <ImStatsBars2 className="text-lg mr-3" /> Stats
           </Link>
         </li>
       </ul>
@@ -83,7 +83,7 @@ export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
       <div className="w-full border-t border-[#cfcccc] absolute left-0"></div>
 
       {token ? (
-        <div className="my-5">
+        <div className="py-5">
           <button
             className="pt-5 pb-1.5 pr-4 flex items-center"
             onClick={handleLogout}
@@ -92,7 +92,7 @@ export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
           </button>
         </div>
       ) : (
-        <div className="my-5 space-y-3 ">
+        <div className="space-y-3 ">
           <Link
             href="/auth/login"
             className="pt-5 pb-1.5 pr-4 flex items-center"
@@ -102,7 +102,7 @@ export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
           </Link>
           <Link
             href="/auth/register"
-            className="py-1.5 pr-4 flex items-center"
+            className="py-5 pr-4 flex items-center"
             onClick={() => setShowBar(false)}
           >
             Sign up

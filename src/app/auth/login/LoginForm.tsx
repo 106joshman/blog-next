@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { apiBaseURL } from "@/utils/fetchLink";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
-import { dispatchUserLogin } from "@/redux/userSlice";
+import { dispatchSetAccessToken, dispatchUserLogin } from "@/redux/userSlice";
 
 export default function Form() {
   const [email, setEmail] = useState("");
@@ -60,10 +60,13 @@ export default function Form() {
         loginValue
       );
 
-      dispatch(dispatchUserLogin({ accessToken: response.data.accessToken }));
+      console.log(response.data)
+      
+      dispatch(dispatchUserLogin({ user: response?.data, access_token: response?.data?.accessToken }))
+      setIsLoadingButton(false);
 
       return router.push("/profile");
-      // setIsLoadingButton(false);
+
     } catch (error) {
       console.error("error signing in:", error);
       setIsLoadingButton(false);
