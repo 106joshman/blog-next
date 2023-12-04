@@ -15,7 +15,7 @@ import { dispatchLogout } from "@/redux/userSlice";
 import LogoutModal from "../Modal";
 
 const Header = () => {
-  const user = useSelector((state: any) => state.user.user.user);
+  const user = useSelector((state: any) => state.user.user);
 
   const token = useSelector((state: any) => state.user.accessToken);
 
