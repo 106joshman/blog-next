@@ -33,29 +33,6 @@ export default function Editor() {
     setTags(selectedTags);
   };
 
-  // const [formData, setFormData] = useState({
-  //   title: "",
-  //   tags: [],
-  //   description: "",
-  //   bodyContent: "",
-  // });
-
-  // const handleChange = (e: any) => {
-  //   // setFormData({
-  //   //   ...formData,
-  //   //   [name]: value.value,
-  //   // });
-
-  //   const { name, value } = e.target;
-  //   setFormData((prevData) => ({ ...prevData, [name]: value }));
-  // };
-
-  // const handleTagChange = (e: any) => {
-  //   const { value } = e.target;
-  //   const tags = value.split(",").map((tag: String) => tag.trim());
-  //   setFormData((prevData) => ({ ...prevData, tags }));
-  // };
-
   const handlePublish = async (e: any) => {
     e.preventDefault();
     setLoading(true);
@@ -134,7 +111,7 @@ export default function Editor() {
               >
                 Preview
               </Button>
-              {/* #2e7d32 */}
+
               <Button
                 type="submit"
                 fullWidth
