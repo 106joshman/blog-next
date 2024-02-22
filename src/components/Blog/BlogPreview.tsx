@@ -6,6 +6,8 @@ import {
   Typography,
   DialogActions,
   Button,
+  Chip,
+  Stack,
 } from "@mui/material";
 
 export interface Props {
@@ -13,6 +15,7 @@ export interface Props {
   bodyContent: string;
   title: string;
   description: string;
+  tags: string[];
   onClose: any;
 }
 
@@ -22,8 +25,9 @@ export default function BlogPreview({
   title,
   description,
   onClose,
+  tags,
 }: Props) {
-  const hasContent = title || description || bodyContent;
+  const hasContent = title || description || bodyContent || tags;
   return (
     <Dialog
       fullWidth
@@ -51,12 +55,22 @@ export default function BlogPreview({
 
       {hasContent ? (
         <DialogContent>
-          <Typography sx={{ mb: 5 }}>{title}</Typography>
+          <Typography variant="h2" sx={{ mb: 5 }}>
+            {title}
+          </Typography>
 
-          <Box sx={{ mt: 5, mb: 10 }}>
-            <Typography sx={{ mb: 5 }}>{description}</Typography>
+          <Box sx={{ mb: 10 }}>
+            <Typography variant="h6" sx={{ mb: 5 }}>
+              {description}
+            </Typography>
 
             <div dangerouslySetInnerHTML={{ __html: bodyContent }} />
+
+            <Stack direction="row" spacing={1} sx={{ mb: 5 }}>
+              {tags?.map((item: any) => (
+                <Chip key={item} size="medium" label={item} />
+              ))}
+            </Stack>
           </Box>
         </DialogContent>
       ) : (

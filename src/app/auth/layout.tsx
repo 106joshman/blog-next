@@ -1,9 +1,24 @@
 import React, { ReactNode } from "react";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
+
 export interface Props {
   children: ReactNode;
 }
 
-export default function layout({ children }: Props) {
+export default function AuthLayout({ children }: Props) {
+  // const isLogged = useSelector(
+  //   (state: any) => state.persistedReducer.user.isLogged
+  // );
+
+  // const router = useRouter();
+
+  // console.log(isLogged);
+
+  // if (isLogged === true) {
+  //   router.push("/profile");
+  // }
+
   return (
     <div className="relative h-screen">
       <div

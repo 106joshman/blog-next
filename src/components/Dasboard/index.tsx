@@ -27,7 +27,10 @@ export default function Dashboard() {
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const token = useSelector((state: any) => state.persistedReducer.user.access_token);
+  const user = useSelector((state: any) => state.persistedReducer.user.user);
+  const token = useSelector(
+    (state: any) => state.persistedReducer.user.access_token
+  );
   const dispatch = useDispatch();
 
   const router = useRouter();
@@ -39,10 +42,12 @@ export default function Dashboard() {
           setIsLoading(true);
           const response = await getUser(token);
           setUserData(response);
-          dispatch(dispatchUpdateUser({
-            user: response,
-            access_token: ''
-          }));
+          dispatch(
+            dispatchUpdateUser({
+              user: response,
+              access_token: "",
+            })
+          );
           setIsLoading(false);
         } catch (error) {
           console.error(error);
@@ -55,15 +60,23 @@ export default function Dashboard() {
     fetchData();
   }, [token, dispatch, router]);
 
+  if (!user && !token) {
+    router.push("/auth/login");
+  }
+
   return (
     <div className="sm:container mx-auto">
       <div className="pt-[4rem] lg:pt-[6rem]"></div>
       <div className="flex min-h-screen max-w-7xl mx-auto">
-        {!isLoading && (
+        {!isLoading ? (
           <>
             <UserBoard userData={userData} />
             <UserList userData={userData} />
           </>
+        ) : (
+          <div className="wrapp">
+            <div className="pulseLoad" />
+          </div>
         )}
       </div>
     </div>

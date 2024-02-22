@@ -17,7 +17,9 @@ import LogoutModal from "../Modal";
 const Header = () => {
   const user = useSelector((state: any) => state.persistedReducer.user.user);
 
-  const token = useSelector((state: any) => state.persistedReducer.user.access_token);
+  const token = useSelector(
+    (state: any) => state.persistedReducer.user.access_token
+  );
 
   const [showBar, setShowBar] = useState(false);
   const [isOpen, setIsOpen] = useState(false);

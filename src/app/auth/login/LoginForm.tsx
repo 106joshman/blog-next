@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { apiBaseURL } from "@/utils/fetchLink";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
-import { dispatchSetAccessToken, dispatchUserLogin } from "@/redux/userSlice";
+import { dispatchUserLogin } from "@/redux/userSlice";
 
 export default function Form() {
   const [email, setEmail] = useState("");
@@ -60,8 +60,6 @@ export default function Form() {
         loginValue
       );
 
-      console.log(response.data)
-      
       dispatch(dispatchUserLogin({ user: response?.data, access_token: response?.data?.accessToken }))
       setIsLoadingButton(false);
 

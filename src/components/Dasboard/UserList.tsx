@@ -13,19 +13,22 @@ export default function UserList({ userData }: Props) {
       <div className="my-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center justify-between minw-[300px] lg:minw-[600px] lg:p-2">
-            <Avatars height={"200px"} width={"200px"} />
+            <div className="lg:hidden flex">
+              <Avatars height={"200px"} width={"200px"} />
+            </div>
+
             {/* <Image
               src="/image.jpg"
               alt="User Image"
               height={200}
               width={200}
               style={{ height: "100px", width: "100px" }}
-              className="rounded-full lg:hidden inline-flex"
+              className="rounded-full "
             ></Image> */}
 
-            <div className="ml-2">
+            <div className="ml-4">
               <h2 className="text-[4vw] lg:mb-3 capitalize lg:hidden font-semibold">
-                {userData.name}
+                {userData?.name}
               </h2>
               <span className="mb-3 text-sm lg:hidden sm:text-base text-[#757575]">
                 0 Subscribers
