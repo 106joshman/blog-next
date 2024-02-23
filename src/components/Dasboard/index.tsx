@@ -2,10 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-
-import { apiBaseURL } from "@/utils/fetchLink";
 import UserBoard from "@/components/Dasboard/UserBoard";
 import UserList from "@/components/Dasboard/UserList";
 import { dispatchUpdateUser } from "@/redux/userSlice";

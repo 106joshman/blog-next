@@ -9,6 +9,7 @@ export const blogApi = createApi({
     prepareHeaders: (headers) => {
       const stored = store.getState();
       const token = stored.persistedReducer.user.access_token;
+
       if (token) {
         headers.set("authorization", `Bearer ${token}`);
       }
@@ -28,7 +29,7 @@ export const blogApi = createApi({
 
     // GETS ALL POSTS
     getAllPosts: builder.query({
-      query: () => "/blogposts",
+      query: () => ({ url: "/blogposts" }),
     }),
 
     // GETS A SINGLE POST
