@@ -15,7 +15,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import userReducer from "./userSlice";
-import { apiSlice } from "./apiSlice";
+import { blogApi } from "./apiSlice";
 
 const persistConfig = {
   key: "root",
@@ -30,13 +30,13 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: { persistedReducer, [apiSlice.reducerPath]: apiSlice.reducer },
+  reducer: { persistedReducer, [blogApi.reducerPath]: blogApi.reducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(apiSlice.middleware),
+    }).concat(blogApi.middleware),
 });
 
 export let persistor = persistStore(store);

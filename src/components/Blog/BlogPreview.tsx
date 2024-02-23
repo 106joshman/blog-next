@@ -12,22 +12,26 @@ import {
 
 export interface Props {
   isOpen: boolean;
-  bodyContent: string;
+  content: string;
   title: string;
   description: string;
   tags: string[];
   onClose: any;
+  isLoading:boolean;
+  onSubmit: any;
 }
 
 export default function BlogPreview({
   isOpen,
-  bodyContent,
+  content,
   title,
   description,
   onClose,
   tags,
+  onSubmit,
+  isLoading,
 }: Props) {
-  const hasContent = title || description || bodyContent || tags;
+  const hasContent = title || description || content || tags;
   return (
     <Dialog
       fullWidth
@@ -42,15 +46,17 @@ export default function BlogPreview({
           Preview Post
         </Typography>
         <Button onClick={onClose}>Cancel</Button>
-        {/* <LoadingButton
+        <Button
           type="submit"
           variant="contained"
-          disabled={!isValid}
-          loading={isSubmitting}
+          color="success"
+          disabled={isLoading}
+          // disabled={!isValid}
+          // loading={isSubmitting}
           onClick={onSubmit}
         >
           Post
-        </LoadingButton> */}
+        </Button>
       </DialogActions>
 
       {hasContent ? (
@@ -64,7 +70,7 @@ export default function BlogPreview({
               {description}
             </Typography>
 
-            <div dangerouslySetInnerHTML={{ __html: bodyContent }} />
+            <div dangerouslySetInnerHTML={{ __html: content }} />
 
             <Stack direction="row" spacing={1} sx={{ mb: 5 }}>
               {tags?.map((item: any) => (

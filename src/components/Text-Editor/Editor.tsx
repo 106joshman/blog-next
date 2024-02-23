@@ -13,13 +13,19 @@ import BlogPreview from "../Blog/BlogPreview";
 import axios from "axios";
 import { apiBaseURL } from "@/utils/fetchLink";
 import { Tiptap } from "./Tiptap";
+import { useSelector } from "react-redux";
+import { useAddNewPostMutation } from "@/redux/apiSlice";
 
 export default function Editor() {
+  const token = useSelector(
+    (state: any) => state.persistedReducer.user.access_token
+  );
+
   const [loading, setLoading] = useState(false);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [tags, setTags] = useState<string[]>([]);
-  const [bodyContent, setBodyContent] = useState("");
+  const [content, setContent] = useState("");
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const tag = ["Food", "Science", "Animal", "Technology", "Faith"];
@@ -33,17 +39,23 @@ export default function Editor() {
     setTags(selectedTags);
   };
 
+  const [addPost, { isLoading, isError }] = useAddNewPostMutation();
+
   const handlePublish = async (e: any) => {
     e.preventDefault();
     setLoading(true);
 
-    const payLoad = { title, description, bodyContent, tags };
-    console.log(payLoad);
+    const payLoad = {
+      title,
+      description,
+      content,
+      tags,
+    };
 
     try {
-      const res = await axios.post(`${apiBaseURL}/blogpost`, payLoad);
+      const res = await addPost(payLoad);
 
-      console.log(res);
+      // console.log(res.data.BlogPost);
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -81,7 +93,7 @@ export default function Editor() {
                   ></textarea>
                 </div>
 
-                <Tiptap description={bodyContent} onChange={setBodyContent} />
+                <Tiptap description={content} onChange={setContent} />
               </Stack>
             </Card>
           </Grid>
@@ -119,6 +131,7 @@ export default function Editor() {
                 variant="contained"
                 size="large"
                 onClick={handlePublish}
+                disabled={isLoading}
               >
                 Post
               </Button>
@@ -130,11 +143,12 @@ export default function Editor() {
       <BlogPreview
         title={title}
         description={description}
-        bodyContent={bodyContent}
+        content={content}
         isOpen={isOpen}
         tags={tags}
+        isLoading={isLoading}
         onClose={() => setIsOpen(false)}
-        // onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handlePublish}
       />
     </>
   );

@@ -9,15 +9,13 @@ import { apiBaseURL } from "@/utils/fetchLink";
 import UserBoard from "@/components/Dasboard/UserBoard";
 import UserList from "@/components/Dasboard/UserList";
 import { dispatchUpdateUser } from "@/redux/userSlice";
+import { axiosInstance } from "@/utils/axios";
 
 const getUser = async (token: string) => {
   try {
-    const response = await axios.get(`${apiBaseURL}/users/current`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    return response?.data;
+    const res = await axiosInstance("/users/current");
+
+    return res?.data;
   } catch (error) {
     console.error("Encounter this", error);
   }
@@ -42,10 +40,11 @@ export default function Dashboard() {
           setIsLoading(true);
           const response = await getUser(token);
           setUserData(response);
+
           dispatch(
             dispatchUpdateUser({
               user: response,
-              access_token: "",
+              access_token: token,
             })
           );
           setIsLoading(false);

@@ -15,7 +15,7 @@ interface PropTypes {
 
 export default function MobileMenu({ setShowBar, setShow }: PropTypes) {
   const token = useSelector(
-    (state: any) => state.persistedReducer.user.accessToken
+    (state: any) => state.persistedReducer.user.access_token
   );
   const router = useRouter();
 

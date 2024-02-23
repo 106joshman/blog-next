@@ -60,11 +60,15 @@ export default function Form() {
         loginValue
       );
 
-      dispatch(dispatchUserLogin({ user: response?.data, access_token: response?.data?.accessToken }))
+      dispatch(
+        dispatchUserLogin({
+          user: response?.data,
+          access_token: response?.data?.accessToken,
+        })
+      );
       setIsLoadingButton(false);
 
       return router.push("/profile");
-
     } catch (error) {
       console.error("error signing in:", error);
       setIsLoadingButton(false);

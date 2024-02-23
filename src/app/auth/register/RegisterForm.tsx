@@ -4,7 +4,7 @@ import PasswordInput from "@/components/Password-Input/PasswordInput";
 import { useRouter } from "next/navigation";
 import { apiBaseURL } from "@/utils/fetchLink";
 import axios from "axios";
-import { FaSpider } from "react-icons/fa";
+import { FaSpinner } from "react-icons/fa";
 
 export default function RegisterForm() {
   const router = useRouter();
@@ -41,6 +41,7 @@ export default function RegisterForm() {
 
     if (!isValidEmail(email)) {
       setError("Email is Invalid");
+      setIsLoadingButton(false);
       return;
     }
 
@@ -48,20 +49,22 @@ export default function RegisterForm() {
       setError(
         "Password must contain 8 characters, one uppercase letter, one lowercase letter, one number and one special character"
       );
+      setIsLoadingButton(false);
       return;
     }
 
     if (firstName === "" || lastName === "") {
       setError("Please enter your name!");
+      setIsLoadingButton(false);
       return;
     }
 
     try {
       await axios.post(`${apiBaseURL}/users/register`, registerValue);
 
-      setIsLoadingButton(true);
-
       router.push("/auth/login");
+
+      setIsLoadingButton(false);
     } catch (error) {
       console.error("error signing in:", error);
       setIsLoadingButton(false);
@@ -120,7 +123,7 @@ export default function RegisterForm() {
             disabled
             className="flex items-center justify-center  font-bold cursor-not-allowed hover:opacity-75 bg-[darkgrey] px-6 py-2 rounded-md w-full"
           >
-            <FaSpider className="text-xl animate-spin mr-2" />
+            <FaSpinner className="text-xl animate-spin mr-2" />
             Register
           </button>
         )}

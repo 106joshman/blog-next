@@ -40,46 +40,43 @@ const article = [
 ];
 export default function FirstTab() {
   return (
-    <div className="">
+    <div className="w-full flex flex-col sm:grid gap-4 sm:grid-cols-2 mt-2">
       {article.map((item) => (
         <div
           key={item.id}
-          className="border-b border-[1px_solid_rgba(230_230_230_1)] p-2"
+          className="block maxw-[18rem] rounded-lg bg-white border border-[1px_solid_rgba(230_230_230_1)]"
         >
-          <div className="flex">
+          <div className="relative overflow-hidden bg-cover bg-no-repeat">
+            <Image
+              src="/image.jpg"
+              alt="User Image"
+              height={200}
+              width={350}
+              style={{ height: "200px", width: "100%" }}
+              className="rounded-t-lg"
+            ></Image>
+          </div>
+
+          <div className="p-2">
             <div className="">
-              <div className="">
-                <Link href="/">
-                  <h2 className="font-bold text-base md:text-xl">
-                    {item.title}
-                  </h2>
-                  <p className="mt-2 leading-6 line-clamp-3 text-justify">
-                    {item.shortDescription}
-                  </p>
-                </Link>
-              </div>
-              <div className="py-8">
-                <ul className="flex items-center space-x-3">
-                  {item.tag.map((tag, index) => (
-                    <li
-                      key={index}
-                      className="bg-gray-200 rounded-full px-3 py-1"
-                    >
-                      {tag}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <Link href="/">
+                <h2 className="font-bold text-base md:text-xl">{item.title}</h2>
+                <p className="mt-2 leading-6 line-clamp-3 text-justify">
+                  {item.shortDescription}
+                </p>
+              </Link>
             </div>
-            <div className="ml-10">
-              <Image
-                src="/image.jpg"
-                alt="User Image"
-                height={200}
-                width={200}
-                // style={{ height: "200px", width: "200px" }}
-                className=""
-              ></Image>
+            <div className="py-4">
+              <ul className="flex items-center space-x-3">
+                {item.tag.map((tag, index) => (
+                  <li
+                    key={index}
+                    className="bg-gray-200 rounded-full px-3 py-1"
+                  >
+                    {tag}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
