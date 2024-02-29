@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Skeleton } from "@mui/material";
-import BlogCard from "./BlogCard";;
+import BlogCard from "./BlogCard";
 import { useGetAllPostsQuery } from "@/redux/apiSlice";
 
 const Card = () => {
@@ -27,6 +27,7 @@ const Card = () => {
 };
 
 export default function Blogpost() {
+  // @ts-ignore
   const { data: post, isLoading }: any = useGetAllPostsQuery();
 
   const response = post?.data;
