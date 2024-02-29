@@ -13,7 +13,7 @@ import BlogPreview from "../Blog/BlogPreview";
 import { Tiptap } from "./Tiptap";
 import { useSelector } from "react-redux";
 import { useAddNewPostMutation } from "@/redux/apiSlice";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function Editor() {
   const user = useSelector((state: any) => state.persistedReducer.user.user);
