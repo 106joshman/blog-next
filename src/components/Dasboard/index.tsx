@@ -8,6 +8,7 @@ import UserList from "@/components/Dasboard/UserList";
 import { dispatchUpdateUser } from "@/redux/userSlice";
 import { axiosInstance } from "@/utils/axios";
 
+
 const getUser = async (token: string) => {
   try {
     const res = await axiosInstance("/users/current");
@@ -20,9 +21,11 @@ const getUser = async (token: string) => {
 
 export default function Dashboard() {
   const [userData, setUserData] = useState(null);
+
   const [isLoading, setIsLoading] = useState(true);
 
   const user = useSelector((state: any) => state.persistedReducer.user.user);
+
   const token = useSelector(
     (state: any) => state.persistedReducer.user.access_token
   );

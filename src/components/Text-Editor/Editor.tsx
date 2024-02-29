@@ -10,23 +10,27 @@ import {
   MenuItem,
 } from "@mui/material";
 import BlogPreview from "../Blog/BlogPreview";
-import axios from "axios";
-import { apiBaseURL } from "@/utils/fetchLink";
 import { Tiptap } from "./Tiptap";
 import { useSelector } from "react-redux";
 import { useAddNewPostMutation } from "@/redux/apiSlice";
+import { useRouter } from "next/router";
 
 export default function Editor() {
-  const token = useSelector(
-    (state: any) => state.persistedReducer.user.access_token
-  );
+  const user = useSelector((state: any) => state.persistedReducer.user.user);
 
   const [loading, setLoading] = useState(false);
+
   const [title, setTitle] = useState("");
+
   const [description, setDescription] = useState("");
+
   const [tags, setTags] = useState<string[]>([]);
+
   const [content, setContent] = useState("");
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const tag = ["Food", "Science", "Animal", "Technology", "Faith"];
 
@@ -48,14 +52,15 @@ export default function Editor() {
     const payLoad = {
       title,
       description,
+      author: user.name,
       content,
       tags,
     };
 
     try {
-      const res = await addPost(payLoad);
+      await addPost(payLoad);
 
-      // console.log(res.data.BlogPost);
+      router.push("/profile");
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -116,7 +121,11 @@ export default function Editor() {
             <Stack direction="row" spacing={1.5} sx={{ mt: 3 }}>
               <Button
                 fullWidth
-                color="inherit"
+                sx={{
+                  color: "#FFF",
+                  background: "#5C4F44",
+                  "&:hover": { backgroundColor: "#5C4F44" },
+                }}
                 variant="outlined"
                 size="large"
                 onClick={() => setIsOpen(true)}
@@ -127,7 +136,11 @@ export default function Editor() {
               <Button
                 type="submit"
                 fullWidth
-                color="success"
+                sx={{
+                  color: "#FFF",
+                  background: "#030202",
+                  "&:hover": { backgroundColor: "#030202" },
+                }}
                 variant="contained"
                 size="large"
                 onClick={handlePublish}

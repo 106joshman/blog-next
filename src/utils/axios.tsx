@@ -1,7 +1,7 @@
 import axios, { AxiosInstance } from "axios";
 import { store } from "../redux/store";
 import { apiBaseURL } from "./fetchLink";
-import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
+// import { createApi, fetchBaseQuery, retry } from "@reduxjs/toolkit/query/react";
 
 export const axiosInstance: AxiosInstance = axios.create({
   baseURL: apiBaseURL,

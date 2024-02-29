@@ -17,40 +17,60 @@ export const blogApi = createApi({
     },
   }),
 
-  endpoints: (builder) => ({
-    // ADD A NEW POST
-    addNewPost: builder.mutation({
-      query: (body) => ({
-        url: "/blogpost",
-        method: "POST",
-        body, // Include the entire post object as the body of the request
+  endpoints: (builder) => {
+    // Endpoints that require authentication
+    const authenticatedEndpoints = {
+      // ADD A NEW POST
+      addNewPost: builder.mutation({
+        query: (body) => ({
+          url: "/blogpost",
+          method: "POST",
+          body,
+        }),
       }),
-    }),
 
-    // GETS ALL POSTS
-    getAllPosts: builder.query({
-      query: () => ({ url: "/blogposts" }),
-    }),
-
-    // GETS A SINGLE POST
-    getPost: builder.query({
-      query: (postId) => `/blogpost/${postId}`,
-    }),
-
-    // UPDATE A PREVIOUS POST
-    updateOldPost: builder.mutation({
-      query: (body) => ({
-        url: "/blogpost",
-        method: "PUT",
-        body, // Include the entire post object as the body of the request
+      // GETS ALL POST BY A SINGLE USER
+      getUserPost: builder.query({
+        query: (id) => `/blogpost/${id}`,
       }),
-    }),
-  }),
+
+      // UPDATE A PREVIOUS POST
+      updateOldPost: builder.mutation({
+        query(data) {
+          const { id, ...body }: any = data;
+          return {
+            url: `posts/${id}`,
+            method: "PUT",
+            body,
+          };
+        },
+      }),
+    };
+
+    const publicEndpoints = {
+      // GETS ALL POSTS
+      getAllPosts: builder.query({
+        query: () => "/blogposts",
+      }),
+
+      // GETS A SINGLE POST
+      getPost: builder.query({
+        query: (id) => `/blogpost/${id}`,
+      }),
+    };
+
+    // Combine the two sets of endpoints based on the authentication status
+    return {
+      ...publicEndpoints,
+      ...authenticatedEndpoints,
+    };
+  },
 });
 
 export const {
   useGetAllPostsQuery,
   useGetPostQuery,
+  useGetUserPostQuery,
   useAddNewPostMutation,
   useUpdateOldPostMutation,
 } = blogApi;

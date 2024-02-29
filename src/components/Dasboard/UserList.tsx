@@ -1,6 +1,6 @@
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Tabs from "../TabComponent/Tabs";
-import Image from "next/image";
+// import Image from "next/image";
 import Avatars from "../Avatar";
 
 interface Props {

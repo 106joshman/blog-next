@@ -1,20 +1,12 @@
-"use client";
+// "use client";
 import Image from "next/image";
 import React from "react";
-import { useParams } from "next/navigation";
-// import post from "../../../../data.json";
+import { useGetPostQuery } from "@/redux/apiSlice";
 
-const getPost = async (id: number) => {
-  const res = await fetch(`data.json/${id}`);
-  
-  return res.json();
-};
+export default async function ArticlePage(_id: any) {
+  const { data: post } = useGetPostQuery(_id);
 
-export default async function ArticlePage() {
-  const params = useParams();
-
-  const iD = Number(params.id);
-  const post = await getPost(iD);
+  const { title, description, tags }: any = post;
 
   return (
     <>
@@ -30,9 +22,9 @@ export default async function ArticlePage() {
           style={{ maxWidth: "100%", height: "100%" }}
         ></Image>
         <div className="p-2">
-          <h2 className="text-lg mb-3 font-bold">Title: {post.title}</h2>
+          <h2 className="text-lg mb-3 font-bold">Title: {title}</h2>
 
-          <p className="text-lg mb-3">{post.description}</p>
+          <p className="text-lg mb-3">{description}</p>
 
           <p className="mb-3">
             <span className="font-semibold mr-1">Related Tags:</span>
@@ -41,7 +33,7 @@ export default async function ArticlePage() {
               className="bg-gray-400 rounded-full px-3 py-1"
               // style={{ color: generateRandomColor() }}
             >
-              {post.tags}
+              {tags}
             </li>
           </p>
         </div>

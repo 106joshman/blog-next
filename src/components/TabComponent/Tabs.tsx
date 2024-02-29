@@ -3,12 +3,8 @@ import React, { useState } from "react";
 import FirstTab from "./FirstTab";
 import SecondTab from "./SecondTab";
 import ThirdTab from "./ThirdTab";
-import { useDispatch, useSelector } from "react-redux";
 
-interface Props {
-  userData?: any;
-}
-export default function Tabs({ userData }: Props) {
+export default function Tabs() {
   const [activeTab, setActiveTab] = useState("tab1");
 
   return (

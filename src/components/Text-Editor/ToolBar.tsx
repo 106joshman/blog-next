@@ -5,7 +5,7 @@ import { MdFormatListBulleted } from "react-icons/md";
 import { BsParagraph, BsBlockquoteLeft } from "react-icons/bs";
 import { FaListOl } from "react-icons/fa";
 import { ImUndo, ImRedo } from "react-icons/im";
-import { TextField, MenuItem } from "@mui/material";
+import { Select, MenuItem } from "@mui/material";
 
 type Props = { editor: Editor | null };
 
@@ -21,7 +21,7 @@ export default function ToolBar({ editor }: Props) {
   return (
     <div className="border bg-transparent rounded-t-lg w-full flex flex-wrap space-x-5 dark:text-neutral-200 flexrap-reverse">
       <div className="w-full lg:w-[150px]">
-        <TextField
+        <Select
           sx={{
             border: "none",
             outline: "none",
@@ -33,8 +33,9 @@ export default function ToolBar({ editor }: Props) {
             },
           }}
           fullWidth
-          select
           onChange={(e) => handleHeadingChange(Number(e.target.value))}
+         
+          defaultValue="Normal"
         >
           {[1, 2, 3, 4, 5, 6].map((level) => (
             <MenuItem
@@ -49,8 +50,10 @@ export default function ToolBar({ editor }: Props) {
               {`Heading ${level}`}
             </MenuItem>
           ))}
-          <MenuItem value="">Normal</MenuItem>
-        </TextField>
+          <MenuItem value="Normal" className="p-1">
+            Normal
+          </MenuItem>
+        </Select>
       </div>
 
       <div className="flex">
